@@ -37,6 +37,7 @@ android_app {
     static_libs: [
         "ParanoidSystemUI-core",
     ],
+    resource_dirs: [],
     use_resource_processor: true,
     use_embedded_native_libs: true,
     platform_apis: true,
