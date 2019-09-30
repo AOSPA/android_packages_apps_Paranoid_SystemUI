@@ -31,6 +31,7 @@ import com.android.systemui.volume.VolumeComponent;
 import com.android.systemui.volume.VolumeDialogImpl;
 import com.android.systemui.volume.dagger.VolumeModule;
 
+import co.aospa.systemui.tristate.dagger.TriStateModule;
 import co.aospa.systemui.volume.ParanoidVolumeDialogComponent;
 import dagger.Binds;
 import dagger.Module;
@@ -40,7 +41,7 @@ import dagger.Provides;
  * Dagger Module for code in the volume package.
  * Fork of {@link VolumeModule}
  */
-@Module
+@Module(includes = {TriStateModule.class})
 public interface ParanoidVolumeModule {
     /** */
     @Binds
