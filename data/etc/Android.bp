@@ -1,0 +1,12 @@
+//
+// Copyright (C) 2022 Paranoid Android
+// SPDX-License-Identifer: Apache-2.0
+//
+
+prebuilt_etc {
+    name: "privapp_whitelist_co.aospa.systemui",
+    system_ext_specific: true,
+    sub_dir: "permissions",
+    src: "co.aospa.systemui.xml",
+    filename_from_src: true,
+}

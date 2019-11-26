@@ -14,6 +14,9 @@
 
     <original-package android:name="com.android.systemui"/>
 
+    <!-- DataSwitch tile -->
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
+
     <application
         tools:replace="android:appComponentFactory"
         android:appComponentFactory=".SystemUIAppComponentFactory">
