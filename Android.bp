@@ -95,6 +95,7 @@ android_app {
     dxflags: ["--multi-dex"],
     required: [
         "privapp_whitelist_com.android.systemui",
+        "privapp_whitelist_co.aospa.systemui",
     ],
     overrides: [
         "SystemUI",
