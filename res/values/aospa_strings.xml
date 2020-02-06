@@ -42,6 +42,8 @@
 
     <!-- Always-on Display QS tile -->
     <string name="quick_settings_aod_label">Always-on display</string>
+    <string name="quick_settings_aod_on_charge_label">AOD on charge</string>
+    <string name="quick_settings_aod_off_label">AOD off</string>
 
     <!-- PowerShare QS tile -->
     <string name="quick_settings_powershare_label">Battery Share</string>
