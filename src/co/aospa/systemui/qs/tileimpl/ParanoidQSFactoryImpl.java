@@ -59,6 +59,8 @@ import javax.inject.Provider;
 import co.aospa.systemui.qs.tiles.CaffeineTile;
 import co.aospa.systemui.qs.tiles.DataSwitchTile;
 import co.aospa.systemui.qs.tiles.HeadsUpTile;
+import co.aospa.systemui.qs.tiles.PowerShareTile;
+
 import dagger.Lazy;
 
 @SysUISingleton
@@ -67,6 +69,7 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
     private final Provider<CaffeineTile> mCaffeineTileProvider;
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
     private final Provider<HeadsUpTile> mHeadsUpTileProvider;
+    private final Provider<PowerShareTile> mPowerShareTileProvider;
 
     @Inject
     public ParanoidQSFactoryImpl(Lazy<QSHost> qsHostLazy,
@@ -103,7 +106,8 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
             Provider<DreamTile> dreamTileProvider,
             Provider<CaffeineTile> caffeineTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
-            Provider<HeadsUpTile> headsUpTileProvider) {
+            Provider<HeadsUpTile> headsUpTileProvider,
+            Provider<PowerShareTile> powerShareTileProvider) {
         super(qsHostLazy, customTileBuilderProvider, wifiTileProvider, internetTileProvider,
                 bluetoothTileProvider, cellularTileProvider, dndTileProvider,
                 colorInversionTileProvider, airplaneModeTileProvider, workModeTileProvider,
@@ -118,6 +122,7 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
         mCaffeineTileProvider = caffeineTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mHeadsUpTileProvider = headsUpTileProvider;
+        mPowerShareTileProvider = powerShareTileProvider;
     }
 
     @Nullable
@@ -130,6 +135,8 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
                 return mDataSwitchTileProvider.get();
             case "heads_up":
                 return mHeadsUpTileProvider.get();
+            case "powershare":
+                return mPowerShareTileProvider.get();
             default:
                 return super.createTileInternal(tileSpec);
         }
