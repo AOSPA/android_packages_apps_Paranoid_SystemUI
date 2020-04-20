@@ -46,6 +46,7 @@ android_library {
     static_libs: [
         "ParanoidSystemUI-res",
         "SystemUI-core",
+        "vendor.aospa.powershare-V1-java",
     ],
     manifest: "AndroidManifest.xml",
     kotlincflags: ["-Xjvm-default=enable"],
