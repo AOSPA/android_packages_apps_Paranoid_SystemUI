@@ -55,10 +55,13 @@ import com.android.systemui.util.leak.GarbageMonitor;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import co.aospa.systemui.qs.tiles.CaffeineTile;
 import dagger.Lazy;
 
 @SysUISingleton
 public class ParanoidQSFactoryImpl extends QSFactoryImpl {
+
+    private final Provider<CaffeineTile> mCaffeineTileProvider;
 
     @Inject
     public ParanoidQSFactoryImpl(Lazy<QSHost> qsHostLazy,
@@ -91,7 +94,8 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
             Provider<QuickAccessWalletTile> quickAccessWalletTileProvider,
             Provider<QRCodeScannerTile> qrCodeScannerTileProvider,
             Provider<OneHandedModeTile> oneHandedModeTileProvider,
-            Provider<ColorCorrectionTile> colorCorrectionTileProvider) {
+            Provider<ColorCorrectionTile> colorCorrectionTileProvider,
+            Provider<CaffeineTile> caffeineTileProvider) {
         super(qsHostLazy, customTileBuilderProvider, wifiTileProvider, internetTileProvider,
                 bluetoothTileProvider, cellularTileProvider, dndTileProvider,
                 colorInversionTileProvider, airplaneModeTileProvider, workModeTileProvider,
@@ -103,12 +107,15 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
                 microphoneToggleTileProvider, deviceControlsTileProvider, alarmTileProvider,
                 quickAccessWalletTileProvider, qrCodeScannerTileProvider, oneHandedModeTileProvider,
                 colorCorrectionTileProvider);
+        mCaffeineTileProvider = caffeineTileProvider;
     }
 
     @Nullable
     @Override
     protected QSTileImpl createTileInternal(String tileSpec) {
         switch (tileSpec) {
+            case "caffeine":
+                return mCaffeineTileProvider.get();
             default:
                 return super.createTileInternal(tileSpec);
         }
