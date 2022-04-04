@@ -44,6 +44,7 @@ android_library {
         "vendor.aospa.powershare-V1-java",
     ],
     manifest: "AndroidManifest.xml",
+    javacflags: ["-Adagger.fastInit=enabled"],
     kotlincflags: ["-Xjvm-default=enable"],
     plugins: ["dagger2-compiler"],
 }
