@@ -58,6 +58,7 @@ import javax.inject.Provider;
 
 import co.aospa.systemui.qs.tiles.CaffeineTile;
 import co.aospa.systemui.qs.tiles.DataSwitchTile;
+import co.aospa.systemui.qs.tiles.HeadsUpTile;
 import dagger.Lazy;
 
 @SysUISingleton
@@ -65,6 +66,7 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
 
     private final Provider<CaffeineTile> mCaffeineTileProvider;
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
+    private final Provider<HeadsUpTile> mHeadsUpTileProvider;
 
     @Inject
     public ParanoidQSFactoryImpl(Lazy<QSHost> qsHostLazy,
@@ -100,7 +102,8 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
             Provider<ColorCorrectionTile> colorCorrectionTileProvider,
             Provider<DreamTile> dreamTileProvider,
             Provider<CaffeineTile> caffeineTileProvider,
-            Provider<DataSwitchTile> dataSwitchTileProvider) {
+            Provider<DataSwitchTile> dataSwitchTileProvider,
+            Provider<HeadsUpTile> headsUpTileProvider) {
         super(qsHostLazy, customTileBuilderProvider, wifiTileProvider, internetTileProvider,
                 bluetoothTileProvider, cellularTileProvider, dndTileProvider,
                 colorInversionTileProvider, airplaneModeTileProvider, workModeTileProvider,
@@ -114,6 +117,7 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
                 colorCorrectionTileProvider, dreamTileProvider);
         mCaffeineTileProvider = caffeineTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
+        mHeadsUpTileProvider = headsUpTileProvider;
     }
 
     @Nullable
@@ -124,6 +128,8 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
                 return mCaffeineTileProvider.get();
             case "dataswitch":
                 return mDataSwitchTileProvider.get();
+            case "heads_up":
+                return mHeadsUpTileProvider.get();
             default:
                 return super.createTileInternal(tileSpec);
         }
