@@ -16,7 +16,6 @@
 
 package co.aospa.systemui.dagger;
 
-import com.android.systemui.dagger.DefaultComponentBinder;
 import com.android.systemui.dagger.DependencyProvider;
 import com.android.systemui.dagger.ReferenceSysUIComponent;
 import com.android.systemui.dagger.SysUIComponent;
@@ -36,7 +35,7 @@ import dagger.Subcomponent;
  */
 @SysUISingleton
 @Subcomponent(modules = {
-        DefaultComponentBinder.class,
+        ParanoidComponentBinder.class,
         DependencyProvider.class,
         NotificationInsetsModule.class,
         QsFrameTranslateModule.class,
