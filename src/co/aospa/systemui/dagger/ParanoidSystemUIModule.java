@@ -27,6 +27,7 @@ import android.os.PowerManager;
 import com.android.internal.logging.UiEventLogger;
 import com.android.keyguard.KeyguardViewController;
 import com.android.systemui.broadcast.BroadcastDispatcher;
+import com.android.systemui.controls.controller.ControlsTileResourceConfiguration;
 import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.qualifiers.Background;
@@ -75,6 +76,7 @@ import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
 
 import javax.inject.Named;
 
+import co.aospa.systemui.controls.AospaControlsTileResourceConfigurationImpl;
 import co.aospa.systemui.qs.tileimpl.ParanoidQSFactoryImpl;
 import co.aospa.systemui.volume.dagger.ParanoidVolumeModule;
 import dagger.Binds;
@@ -222,4 +224,7 @@ public abstract class ParanoidSystemUIModule {
 
     @Binds
     abstract DozeHost provideDozeHost(DozeServiceHost dozeServiceHost);
+
+    @Binds
+    abstract ControlsTileResourceConfiguration bindControlsTileResourceConfiguration(AospaControlsTileResourceConfigurationImpl configuration);
 }
