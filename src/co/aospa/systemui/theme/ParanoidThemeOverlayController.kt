@@ -5,48 +5,58 @@
 
 package co.aospa.systemui.theme
 
+import android.app.ActivityManager
+import android.app.UiModeManager
 import android.app.WallpaperManager
 import android.content.Context
 import android.content.res.Resources
 import android.os.Handler
 import android.os.UserManager
-
 import com.android.systemui.broadcast.BroadcastDispatcher
-import com.android.systemui.dagger.SysUISingleton
 import com.android.systemui.dagger.qualifiers.Background
 import com.android.systemui.dagger.qualifiers.Main
 import com.android.systemui.dump.DumpManager
 import com.android.systemui.flags.FeatureFlags
 import com.android.systemui.keyguard.WakefulnessLifecycle
+import com.android.systemui.keyguard.domain.interactor.KeyguardTransitionInteractor
 import com.android.systemui.settings.UserTracker
+import com.android.systemui.statusbar.policy.ConfigurationController
+import com.android.systemui.statusbar.policy.ConfigurationController.ConfigurationListener
 import com.android.systemui.statusbar.policy.DeviceProvisionedController
 import com.android.systemui.theme.ThemeOverlayApplier
 import com.android.systemui.theme.ThemeOverlayController
+import com.android.systemui.util.kotlin.JavaAdapter
 import com.android.systemui.util.settings.SecureSettings
 import com.android.systemui.util.settings.SystemSettings
-
 import java.util.concurrent.Executor
-
 import javax.inject.Inject
 
-class ParanoidThemeOverlayController @Inject constructor(
-    private val context: Context,
-    broadcastDispatcher: BroadcastDispatcher,
-    @Background bgHandler: Handler,
-    @Main mainExecutor: Executor,
-    @Background bgExecutor: Executor,
-    themeOverlayApplier: ThemeOverlayApplier,
-    secureSettings: SecureSettings,
-    SystemSettings: SystemSettings,
-    wallpaperManager: WallpaperManager,
-    userManager: UserManager,
-    deviceProvisionedController: DeviceProvisionedController,
-    userTracker: UserTracker,
-    dumpManager: DumpManager,
-    featureFlags: FeatureFlags,
-    @Main resources: Resources,
-    wakefulnessLifecycle: WakefulnessLifecycle,
-) : ThemeOverlayController(
+class ParanoidThemeOverlayController
+@Inject
+constructor(
+  private val context: Context,
+  broadcastDispatcher: BroadcastDispatcher,
+  @Background bgHandler: Handler,
+  @Main mainExecutor: Executor,
+  @Background bgExecutor: Executor,
+  themeOverlayApplier: ThemeOverlayApplier,
+  secureSettings: SecureSettings,
+  systemSettings: SystemSettings,
+  wallpaperManager: WallpaperManager,
+  userManager: UserManager,
+  deviceProvisionedController: DeviceProvisionedController,
+  userTracker: UserTracker,
+  dumpManager: DumpManager,
+  featureFlags: FeatureFlags,
+  @Main resources: Resources,
+  wakefulnessLifecycle: WakefulnessLifecycle,
+  javaAdapter: JavaAdapter,
+  keyguardTransitionInteractor: KeyguardTransitionInteractor,
+  uiModeManager: UiModeManager,
+  private val configurationController: ConfigurationController,
+  activityManager: ActivityManager,
+) :
+  ThemeOverlayController(
     context,
     broadcastDispatcher,
     bgHandler,
@@ -63,6 +73,21 @@ class ParanoidThemeOverlayController @Inject constructor(
     featureFlags,
     resources,
     wakefulnessLifecycle,
-) {
+    javaAdapter,
+    keyguardTransitionInteractor,
+    uiModeManager,
+    activityManager,
+  ) {
 
+  private val darkConfigurationListener =
+    object : ConfigurationListener {
+      override fun onUiModeChanged() {
+        reevaluateSystemTheme(true /* forceReload */)
+      }
+    }
+
+  override fun start() {
+    super.start()
+    configurationController.addCallback(darkConfigurationListener)
+  }
 }
