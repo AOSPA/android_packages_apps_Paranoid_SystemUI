@@ -80,11 +80,14 @@ import com.android.systemui.statusbar.policy.IndividualSensorPrivacyController;
 import com.android.systemui.statusbar.policy.IndividualSensorPrivacyControllerImpl;
 import com.android.systemui.statusbar.policy.SensorPrivacyController;
 import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
+import com.android.systemui.theme.ThemeOverlayController;
 import com.android.systemui.toast.ToastModule;
 import com.android.systemui.unfold.SysUIUnfoldStartableModule;
 import com.android.systemui.unfold.UnfoldTransitionModule;
 import com.android.systemui.util.kotlin.SysUICoroutinesModule;
 import com.android.systemui.wallpapers.dagger.WallpaperModule;
+
+import co.aospa.systemui.theme.ParanoidThemeOverlayController;
 
 import java.util.Set;
 
@@ -220,6 +223,9 @@ public abstract class ParanoidSystemUIModule {
     @Binds
     abstract FingerprintInteractiveToAuthProvider bindFingerprintInteractiveToAuthProviderImpl(
             FingerprintInteractiveToAuthProviderImpl impl);
+
+    @Binds
+    abstract ThemeOverlayController provideThemeOverlayController(ParanoidThemeOverlayController themeOverlayController);
 
     /** */
     @Provides
