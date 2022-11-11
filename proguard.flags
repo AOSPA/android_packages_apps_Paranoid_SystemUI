@@ -1,4 +1,4 @@
--include ../../../../frameworks/base/packages/SystemUI/proguard.flags
+-include ../../../../frameworks/base/packages/SystemUI/proguard_common.flags
 
 # Proguard rules not owned by core SystemUI
 -keep class co.aospa.** { *; }
