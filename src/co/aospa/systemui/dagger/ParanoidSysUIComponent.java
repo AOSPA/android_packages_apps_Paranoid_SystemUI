@@ -22,6 +22,7 @@ import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.SystemUIBinder;
 import com.android.systemui.dagger.SystemUICoreStartableModule;
 import com.android.systemui.dagger.SystemUIModule;
+import com.android.systemui.statusbar.NotificationInsetsModule;
 import com.android.systemui.statusbar.QsFrameTranslateModule;
 
 import dagger.Subcomponent;
@@ -30,6 +31,7 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {
         DefaultComponentBinder.class,
         DependencyProvider.class,
+        NotificationInsetsModule.class,
         QsFrameTranslateModule.class,
         SystemUIBinder.class,
         SystemUICoreStartableModule.class,
