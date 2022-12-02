@@ -1,0 +1,74 @@
+//
+// Copyright (C) 2022 Paranoid Android
+// SPDX-License-Identifer: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["packages_apps_Paranoid_SystemUI_license"],
+}
+
+// Added automatically by a large-scale-change
+// See: http://go/android-license-faq
+license {
+    name: "packages_apps_Paranoid_SystemUI_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+    ],
+    license_text: [
+        "NOTICE",
+    ],
+}
+
+android_library {
+    name: "ParanoidSystemUI-res",
+    manifest: "AndroidManifest.xml",
+    resource_dirs: [
+        "res",
+        "res-keyguard",
+    ],
+    static_libs: [
+        "SystemUI-core",
+    ],
+}
+
+android_library {
+    name: "ParanoidSystemUI-core",
+    srcs: [
+        "src/**/*.kt",
+        "src/**/*.java",
+        "src/**/I*.aidl",
+    ],
+    static_libs: [
+        "ParanoidSystemUI-res",
+        "SystemUI-core",
+    ],
+    manifest: "AndroidManifest.xml",
+    kotlincflags: ["-Xjvm-default=enable"],
+    plugins: ["dagger2-compiler"],
+}
+
+android_app {
+    name: "ParanoidSystemUI",
+    defaults: ["platform_app_defaults"],
+    static_libs: [
+        "ParanoidSystemUI-core",
+    ],
+    use_embedded_native_libs: true,
+    platform_apis: true,
+    system_ext_specific: true,
+    certificate: "platform",
+    privileged: true,
+
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+    kotlincflags: ["-Xjvm-default=enable"],
+    dxflags: ["--multi-dex"],
+    required: [
+        "privapp_whitelist_com.android.systemui",
+    ],
+    overrides: [
+        "SystemUI",
+    ],
+}
