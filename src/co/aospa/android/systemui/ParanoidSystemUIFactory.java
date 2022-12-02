@@ -21,15 +21,33 @@ import com.android.systemui.SystemUIFactory;
 import com.android.systemui.dagger.GlobalRootComponent;
 
 import co.aospa.android.systemui.dagger.ParanoidDaggerGlobalRootComponent;
+import co.aospa.android.systemui.dagger.ParanoidSysUIComponent;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 
 public class ParanoidSystemUIFactory extends SystemUIFactory {
+
+    private ParanoidGlobalRootComponent mParanoidRootComponent;
+    private ParanoidSysUIComponent mParanoidSysUIComponent;
+	
     @Override
     protected GlobalRootComponent buildGlobalRootComponent(Context context) {
         return ParanoidDaggerGlobalRootComponent.builder()
                 .context(context)
                 .build();
+    }
+	
+    @Override
+    @VisibleForTesting
+    public void init(Context context, boolean fromTest) {
+        super();
+        mParanoidRootComponent = buildGlobalRootComponent(context);
+        ParanoidSysUIComponent.Builder builder = mParanoidRootComponent.getSysUIComponent();
+
+        mParanoidSysUIComponent = builder.build();
+        if (mInitializeComponents) {
+            mSysUIComponent.createKeyguardSmartspaceController();
+        }
     }
 }

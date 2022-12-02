@@ -21,15 +21,14 @@ import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.SysUIComponent;
 import com.android.systemui.dagger.SystemUIModule;
 
+import co.aospa.android.systemui.smartspace.KeyguardSmartspaceController;
+
 import dagger.Subcomponent;
 
 @SysUISingleton
 @Subcomponent(modules = {
-        ParanoidComponentBinder.class,
         DependencyProvider.class,
-        SystemUICoreStartableModule.class,
         SystemUIModule.class,
-        ParanoidSystemUIBinder.class,
         ParanoidSystemUIModule.class})
 
 public interface ParanoidSysUIComponent extends SysUIComponent {
@@ -38,4 +37,10 @@ public interface ParanoidSysUIComponent extends SysUIComponent {
     interface Builder extends SysUIComponent.Builder {
         ParanoidSysUIComponent build();
     }
+
+    /**
+     * Creates a KeyguardSmartspaceController.
+     */
+    @SysUISingleton
+    KeyguardSmartspaceController createKeyguardSmartspaceController();
 }

@@ -42,6 +42,7 @@ android_library {
     static_libs: [
         "ParanoidSystemUI-res",
         "SystemUI-core",
+        "bcsmartspace-google",
     ],
     manifest: "AndroidManifest.xml",
     kotlincflags: ["-Xjvm-default=enable"],

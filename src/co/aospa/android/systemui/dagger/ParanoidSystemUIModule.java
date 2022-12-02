@@ -18,6 +18,7 @@ package co.aospa.android.systemui.dagger;
 import static com.android.systemui.Dependency.ALLOW_NOTIFICATION_LONG_PRESS_NAME;
 import static com.android.systemui.Dependency.LEAK_REPORT_EMAIL_NAME;
 
+import android.app.AlarmManager;
 import android.content.Context;
 import android.hardware.SensorPrivacyManager;
 import android.os.Handler;
@@ -32,6 +33,7 @@ import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
+import com.android.systemui.flags.FeatureFlags;
 import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.plugins.qs.QSFactory;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
@@ -44,6 +46,7 @@ import com.android.systemui.statusbar.CommandQueue;
 import com.android.systemui.statusbar.KeyguardIndicationController;
 import com.android.systemui.statusbar.NotificationLockscreenUserManager;
 import com.android.systemui.statusbar.NotificationLockscreenUserManagerImpl;
+import com.android.systemui.statusbar.NotificationMediaManager;
 import com.android.systemui.statusbar.NotificationShadeWindowController;
 import com.android.systemui.statusbar.notification.NotificationEntryManager;
 import com.android.systemui.statusbar.notification.collection.provider.VisualStabilityProvider;
@@ -65,9 +68,16 @@ import com.android.systemui.statusbar.policy.HeadsUpManager;
 import com.android.systemui.statusbar.policy.HeadsUpManagerLogger;
 import com.android.systemui.statusbar.policy.IndividualSensorPrivacyController;
 import com.android.systemui.statusbar.policy.IndividualSensorPrivacyControllerImpl;
+import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.SensorPrivacyController;
 import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
+import com.android.systemui.util.concurrency.DelayableExecutor;
 import com.android.systemui.volume.dagger.VolumeModule;
+
+import co.aospa.android.systemui.smartspace.BcSmartspaceDataProvider;
+import co.aospa.android.systemui.smartspace.KeyguardMediaViewController;
+import co.aospa.android.systemui.smartspace.KeyguardSmartspaceController;
+import co.aospa.android.systemui.smartspace.KeyguardZenAlarmViewController;
 
 import javax.inject.Named;
 
@@ -200,4 +210,31 @@ public abstract class ParanoidSystemUIModule {
 
     @Binds
     abstract DozeHost provideDozeHost(DozeServiceHost dozeServiceHost);
+
+    @Provides
+    @SysUISingleton
+    static KeyguardSmartspaceController provideKeyguardSmartspaceController(FeatureFlags featureFlags,
+            KeyguardZenAlarmViewController keyguardZenAlarmViewController, KeyguardMediaViewController keyguardMediaViewController) {
+        return new KeyguardSmartspaceController(featureFlags, keyguardZenAlarmViewController, keyguardMediaViewController);
+    }
+
+    @Provides
+    @SysUISingleton
+    static KeyguardZenAlarmViewController provideKeyguardZenAlarmViewController(Context context, BcSmartspaceDataPlugin bcSmartspaceDataPlugin, ZenModeController zenModeController,
+            AlarmManager alarmManager, NextAlarmController nextAlarmController, Handler handler) {
+        return new KeyguardZenAlarmViewController(context, bcSmartspaceDataPlugin, zenModeController, alarmManager, nextAlarmController, handler);
+    }
+
+    @Provides
+    @SysUISingleton
+    static KeyguardMediaViewController provideKeyguardMediaViewController(Context context, BcSmartspaceDataPlugin bcSmartspaceDataPlugin,
+            @Main DelayableExecutor delayableExecutor, NotificationMediaManager notificationMediaManager, BroadcastDispatcher broadcastDispatcher) {
+        return new KeyguardMediaViewController(context, bcSmartspaceDataPlugin, delayableExecutor, notificationMediaManager, broadcastDispatcher);
+    }
+
+    @Provides
+    @SysUISingleton
+    static BcSmartspaceDataPlugin provideBcSmartspaceDataPlugin() {
+        return new BcSmartspaceDataProvider();
+    }
 }
