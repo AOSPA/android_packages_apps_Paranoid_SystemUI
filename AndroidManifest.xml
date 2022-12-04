@@ -27,7 +27,12 @@
         tools:replace="android:appComponentFactory"
         android:appComponentFactory=".SystemUIAppComponentFactory">
 
-        <!-- Content goes here -->
+        <provider android:name=".keyguard.KeyguardSliceProvider"
+                  android:authorities="com.android.systemui.keyguard"
+                  android:grantUriPermissions="true"
+                  android:exported="true"
+                  android:enabled="false">
+        </provider>
 
     </application>
 
