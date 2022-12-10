@@ -17,8 +17,6 @@
 
 package co.aospa.systemui.qs.tiles;
 
-import static com.android.internal.logging.MetricsLogger.VIEW_UNKNOWN;
-
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -121,11 +119,6 @@ public class HeadsUpTile extends QSTileImpl<BooleanState> {
     @Override
     public CharSequence getTileLabel() {
         return mContext.getString(R.string.quick_settings_heads_up_label);
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return VIEW_UNKNOWN;
     }
 
     @Override
