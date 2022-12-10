@@ -43,7 +43,6 @@ import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.power.EnhancedEstimates;
 import com.android.systemui.power.dagger.PowerModule;
 import com.android.systemui.qs.dagger.QSModule;
-import com.android.systemui.qs.tileimpl.QSFactoryImpl;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsImplementation;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
@@ -77,6 +76,7 @@ import com.android.systemui.volume.dagger.VolumeModule;
 
 import javax.inject.Named;
 
+import co.aospa.systemui.qs.tileimpl.ParanoidQSFactoryImpl;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
@@ -152,7 +152,7 @@ public abstract class ParanoidSystemUIModule {
     /** */
     @Binds
     @SysUISingleton
-    public abstract QSFactory bindQSFactory(QSFactoryImpl qsFactoryImpl);
+    public abstract QSFactory bindQSFactory(ParanoidQSFactoryImpl qsFactoryImpl);
 
     @Binds
     abstract DockManager bindDockManager(DockManagerImpl dockManager);
