@@ -69,11 +69,11 @@ import com.android.systemui.statusbar.policy.IndividualSensorPrivacyController;
 import com.android.systemui.statusbar.policy.IndividualSensorPrivacyControllerImpl;
 import com.android.systemui.statusbar.policy.SensorPrivacyController;
 import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
-import com.android.systemui.volume.dagger.VolumeModule;
 
 import javax.inject.Named;
 
 import co.aospa.systemui.qs.tileimpl.ParanoidQSFactoryImpl;
+import co.aospa.systemui.volume.dagger.ParanoidVolumeModule;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
@@ -86,7 +86,7 @@ import dagger.Provides;
         PowerModule.class,
         QSModule.class,
         StartCentralSurfacesModule.class,
-        VolumeModule.class
+        ParanoidVolumeModule.class
 })
 public abstract class ParanoidSystemUIModule {
 
