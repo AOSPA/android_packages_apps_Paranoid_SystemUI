@@ -16,6 +16,24 @@
       "message": "Works for me but I want someone else to verify it too",
       "revId": "93337fadf1ce38b5a5c7b358ab37832bde66a068",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3de71e3_89515502",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000722
+      },
+      "writtenOn": "2022-12-19T10:59:13Z",
+      "side": 1,
+      "message": "packages/apps/Paranoid/SystemUI/Android.bp:28:1: module \"ParanoidSystemUI-res\" variant \"android_common\": module source path \"packages/apps/Paranoid/SystemUI/res-keyguard\" does not exist\n\nforgot to add res-keyguard dir?",
+      "parentUuid": "4090e247_9da1d764",
+      "revId": "93337fadf1ce38b5a5c7b358ab37832bde66a068",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
