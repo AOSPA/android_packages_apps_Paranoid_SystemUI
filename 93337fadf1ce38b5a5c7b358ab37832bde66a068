@@ -34,6 +34,24 @@
       "parentUuid": "4090e247_9da1d764",
       "revId": "93337fadf1ce38b5a5c7b358ab37832bde66a068",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87829563_e113ef60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2022-12-19T15:00:27Z",
+      "side": 1,
+      "message": "I thought I\u0027ll keep it for smartspace maybe but that doesn\u0027t use res-keyguard either so we should remove that resource include dir. Also you can\u0027t add empty directories in git without any file in it",
+      "parentUuid": "f3de71e3_89515502",
+      "revId": "93337fadf1ce38b5a5c7b358ab37832bde66a068",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
