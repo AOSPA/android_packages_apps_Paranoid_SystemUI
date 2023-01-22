@@ -43,4 +43,7 @@
     <!-- Always-on Display QS tile -->
     <string name="quick_settings_aod_label">Always-on display</string>
 
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB tethering</string>
+
 </resources>
