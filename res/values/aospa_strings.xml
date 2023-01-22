@@ -40,4 +40,7 @@
     <!-- DC Dimming tile -->
     <string name="quick_settings_dc_dimming_label">DC Dimming</string>
 
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB tethering</string>
+
 </resources>
