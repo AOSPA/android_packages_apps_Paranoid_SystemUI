@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- SystemUIFactory component -->
     <string name="config_systemUIFactoryComponent" translatable="false">
         co.aospa.systemui.ParanoidSystemUIInitializer
@@ -9,5 +10,10 @@
     <string name="quick_settings_tiles_stock" translatable="false">
         internet,bt,flashlight,dnd,alarm,airplane,controls,wallet,rotation,battery,cast,screenrecord,mictoggle,cameratoggle,location,hotspot,inversion,saver,dark,work,night,reverse,reduce_brightness,qr_code_scanner,onehanded,color_correction,dream,caffeine,dataswitch,heads_up
     </string>
+
+    <!-- The location of the device's alert slider:
+         0: Left side
+         1: Right side -->
+    <integer name="config_alertSliderLocation">0</integer>
 
 </resources>
