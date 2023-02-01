@@ -283,7 +283,7 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
                         textId = R.string.volume_ringer_status_normal;
                         break;
                 }
-                int triStatePos = res.getInteger(com.android.internal.R.integer.config_alertSliderLocation);
+                int triStatePos = res.getInteger(R.integer.config_alertSliderLocation);
                 boolean isTsKeyRight = true;
                 if (triStatePos == TRI_STATE_UI_POSITION_LEFT) {
                     isTsKeyRight = false;
