@@ -56,6 +56,7 @@ import com.android.systemui.util.leak.GarbageMonitor;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import co.aospa.systemui.qs.tiles.AlwaysOnDisplayTile;
 import co.aospa.systemui.qs.tiles.CaffeineTile;
 import co.aospa.systemui.qs.tiles.DataSwitchTile;
 import co.aospa.systemui.qs.tiles.DcDimmingTile;
@@ -65,6 +66,7 @@ import dagger.Lazy;
 @SysUISingleton
 public class ParanoidQSFactoryImpl extends QSFactoryImpl {
 
+    private final Provider<AlwaysOnDisplayTile> mAODTileProvider;
     private final Provider<CaffeineTile> mCaffeineTileProvider;
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
     private final Provider<HeadsUpTile> mHeadsUpTileProvider;
@@ -103,6 +105,7 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
             Provider<OneHandedModeTile> oneHandedModeTileProvider,
             Provider<ColorCorrectionTile> colorCorrectionTileProvider,
             Provider<DreamTile> dreamTileProvider,
+            Provider<AlwaysOnDisplayTile> aodTileProvider,
             Provider<CaffeineTile> caffeineTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<HeadsUpTile> headsUpTileProvider,
@@ -118,6 +121,7 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
                 microphoneToggleTileProvider, deviceControlsTileProvider, alarmTileProvider,
                 quickAccessWalletTileProvider, qrCodeScannerTileProvider, oneHandedModeTileProvider,
                 colorCorrectionTileProvider, dreamTileProvider);
+        mAODTileProvider = aodTileProvider;
         mCaffeineTileProvider = caffeineTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mHeadsUpTileProvider = headsUpTileProvider;
@@ -128,6 +132,8 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
     @Override
     protected QSTileImpl createTileInternal(String tileSpec) {
         switch (tileSpec) {
+            case "aod":
+                return mAODTileProvider.get();
             case "caffeine":
                 return mCaffeineTileProvider.get();
             case "dataswitch":
