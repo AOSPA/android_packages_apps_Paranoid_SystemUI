@@ -154,9 +154,4 @@ public class AlwaysOnDisplayTile extends QSTileImpl<BooleanState> implements
             state.secondaryLabel = null;
         }
     }
-
-    @Override
-    public int getMetricsCategory() {
-        return 0;
-    }
 }
