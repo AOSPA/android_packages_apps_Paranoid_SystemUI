@@ -40,4 +40,7 @@
     <!-- DC Dimming tile -->
     <string name="quick_settings_dc_dimming_label">DC Dimming</string>
 
+    <!-- Always-on Display QS tile -->
+    <string name="quick_settings_aod_label">Always-on display</string>
+
 </resources>
