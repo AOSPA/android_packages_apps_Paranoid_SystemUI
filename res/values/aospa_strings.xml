@@ -42,4 +42,7 @@
     <string name="bluetooth_is_off">Bluetooth is off</string>
     <string name="tap_a_device_to_connect">Tap a device to connect/disconnect</string>
 
+    <!-- Always-on Display QS tile -->
+    <string name="quick_settings_aod_label">Always-on display</string>
+
 </resources>
