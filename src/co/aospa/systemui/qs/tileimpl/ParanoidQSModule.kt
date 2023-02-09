@@ -19,6 +19,7 @@ package co.aospa.systemui.qs.tileimpl;
 import com.android.systemui.qs.tileimpl.QSTileImpl
 
 import co.aospa.systemui.qs.tiles.AlwaysOnDisplayTile;
+import co.aospa.systemui.qs.tiles.BluetoothDialogTile;
 import co.aospa.systemui.qs.tiles.CaffeineTile;
 import co.aospa.systemui.qs.tiles.DataSwitchTile;
 import co.aospa.systemui.qs.tiles.DcDimmingTile;
@@ -37,6 +38,12 @@ interface ParanoidQSModule {
     @IntoMap
     @StringKey(AlwaysOnDisplayTile.TILE_SPEC)
     fun bindAlwaysOnDisplayTile(alwaysOnDisplayTile: AlwaysOnDisplayTile): QSTileImpl<*>
+
+    /** Inject BluetoothDialogTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(BluetoothDialogTile.TILE_SPEC)
+    fun bindBluetoothDialogTile(bluetoothDialogTile: BluetoothDialogTile): QSTileImpl<*>
 
     /** Inject CaffeineTile into tileMap in QSModule */
     @Binds
