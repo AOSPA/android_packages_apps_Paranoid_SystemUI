@@ -25,7 +25,6 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.qs.tiles.AirplaneModeTile;
 import com.android.systemui.qs.tiles.AlarmTile;
 import com.android.systemui.qs.tiles.BatterySaverTile;
-import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CameraToggleTile;
 import com.android.systemui.qs.tiles.CastTile;
 import com.android.systemui.qs.tiles.CellularTile;
@@ -56,6 +55,7 @@ import com.android.systemui.util.leak.GarbageMonitor;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import co.aospa.systemui.qs.tiles.BluetoothDialogTile;
 import co.aospa.systemui.qs.tiles.CaffeineTile;
 import co.aospa.systemui.qs.tiles.DataSwitchTile;
 import co.aospa.systemui.qs.tiles.HeadsUpTile;
@@ -73,7 +73,7 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
             Provider<CustomTile.Builder> customTileBuilderProvider,
             Provider<WifiTile> wifiTileProvider,
             Provider<InternetTile> internetTileProvider,
-            Provider<BluetoothTile> bluetoothTileProvider,
+            Provider<BluetoothDialogTile> bluetoothTileProvider,
             Provider<CellularTile> cellularTileProvider,
             Provider<DndTile> dndTileProvider,
             Provider<ColorInversionTile> colorInversionTileProvider,
@@ -105,7 +105,7 @@ public class ParanoidQSFactoryImpl extends QSFactoryImpl {
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<HeadsUpTile> headsUpTileProvider) {
         super(qsHostLazy, customTileBuilderProvider, wifiTileProvider, internetTileProvider,
-                bluetoothTileProvider, cellularTileProvider, dndTileProvider,
+                bluetoothTileProvider::get, cellularTileProvider, dndTileProvider,
                 colorInversionTileProvider, airplaneModeTileProvider, workModeTileProvider,
                 rotationLockTileProvider, flashlightTileProvider, locationTileProvider,
                 castTileProvider, hotspotTileProvider, batterySaverTileProvider,
