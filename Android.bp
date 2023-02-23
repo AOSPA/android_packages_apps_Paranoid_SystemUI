@@ -7,11 +7,6 @@ package {
     default_applicable_licenses: ["packages_apps_Paranoid_SystemUI_license"],
 }
 
-soong_config_module_type_import {
-    from: "frameworks/base/packages/SystemUI/Android.bp",
-    module_types: ["systemui_optimized_java_defaults"],
-}
-
 // Added automatically by a large-scale-change
 // See: http://go/android-license-faq
 license {
@@ -53,33 +48,11 @@ android_library {
     plugins: ["dagger2-compiler"],
 }
 
-systemui_optimized_java_defaults {
-    name: "ParanoidSystemUI_app_defaults",
-    soong_config_variables: {
-        SYSTEMUI_OPTIMIZE_JAVA: {
-            optimize: {
-                enabled: true,
-                optimize: true,
-                shrink: true,
-                shrink_resources: true,
-                proguard_compatibility: false,
-                proguard_flags_files: ["proguard.flags"],
-            },
-            conditions_default: {
-                optimize: {
-                    proguard_compatibility: false,
-                    proguard_flags_files: ["proguard.flags"],
-                },
-            },
-        },
-    },
-}
-
 android_app {
     name: "ParanoidSystemUI",
     defaults: [
         "platform_app_defaults",
-        "ParanoidSystemUI_app_defaults",
+        "SystemUI_optimized_defaults",
     ],
     static_libs: [
         "ParanoidSystemUI-core",
@@ -92,11 +65,11 @@ android_app {
 
     libs: ["extphonelib"],
 
+    kotlincflags: ["-Xjvm-default=enable"],
+    dxflags: ["--multi-dex"],
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
-    kotlincflags: ["-Xjvm-default=enable"],
-    dxflags: ["--multi-dex"],
     required: [
         "privapp_whitelist_com.android.systemui",
         "privapp_whitelist_co.aospa.systemui",
