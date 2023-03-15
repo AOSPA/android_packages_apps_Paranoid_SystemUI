@@ -59,7 +59,8 @@ public interface ParanoidVolumeModule {
             MediaOutputDialogFactory mediaOutputDialogFactory,
             VolumePanelFactory volumePanelFactory,
             ActivityStarter activityStarter,
-            InteractionJankMonitor interactionJankMonitor) {
+            InteractionJankMonitor interactionJankMonitor,
+            DumpManager dumpManager) {
         VolumeDialogImpl impl = new VolumeDialogImpl(
                 context,
                 volumeDialogController,
@@ -69,7 +70,8 @@ public interface ParanoidVolumeModule {
                 mediaOutputDialogFactory,
                 volumePanelFactory,
                 activityStarter,
-                interactionJankMonitor);
+                interactionJankMonitor,
+                dumpManager);
         impl.setStreamImportant(AudioManager.STREAM_SYSTEM, false);
         impl.setAutomute(true);
         impl.setSilentMode(false);
