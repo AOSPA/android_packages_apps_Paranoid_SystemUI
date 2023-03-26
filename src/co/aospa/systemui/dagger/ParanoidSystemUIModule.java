@@ -72,7 +72,7 @@ import javax.inject.Named;
 
 import co.aospa.systemui.controls.AospaControlsTileResourceConfigurationImpl;
 import co.aospa.systemui.qs.tileimpl.ParanoidQSFactoryImpl;
-import co.aospa.systemui.volume.dagger.ParanoidVolumeModule;
+import com.android.systemui.volume.dagger.VolumeModule;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
@@ -88,7 +88,7 @@ import dagger.Provides;
         QSModule.class,
         ReferenceScreenshotModule.class,
         StartCentralSurfacesModule.class,
-        ParanoidVolumeModule.class
+        VolumeModule.class
 })
 public abstract class ParanoidSystemUIModule {
 
