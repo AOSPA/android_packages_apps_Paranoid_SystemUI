@@ -29,12 +29,12 @@ import com.android.systemui.statusbar.policy.AccessibilityManagerWrapper;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.volume.VolumeComponent;
-import com.android.systemui.volume.VolumeDialogImpl;
 import com.android.systemui.volume.VolumePanelFactory;
 import com.android.systemui.volume.dagger.VolumeModule;
 
 import co.aospa.systemui.tristate.dagger.TriStateModule;
 import co.aospa.systemui.volume.ParanoidVolumeDialogComponent;
+import co.aospa.systemui.volume.ParanoidVolumeDialogImpl;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
@@ -62,7 +62,7 @@ public interface ParanoidVolumeModule {
             ActivityStarter activityStarter,
             InteractionJankMonitor interactionJankMonitor,
             DumpManager dumpManager) {
-        VolumeDialogImpl impl = new VolumeDialogImpl(
+        ParanoidVolumeDialogImpl impl = new ParanoidVolumeDialogImpl(
                 context,
                 volumeDialogController,
                 accessibilityManagerWrapper,
