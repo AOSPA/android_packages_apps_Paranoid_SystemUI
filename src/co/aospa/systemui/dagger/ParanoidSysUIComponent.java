@@ -20,7 +20,6 @@ import com.android.systemui.dagger.DependencyProvider;
 import com.android.systemui.dagger.SysUIComponent;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.SystemUIBinder;
-import com.android.systemui.dagger.SystemUICoreStartableModule;
 import com.android.systemui.dagger.SystemUIModule;
 
 import dagger.Subcomponent;
@@ -30,7 +29,7 @@ import dagger.Subcomponent;
         DefaultComponentBinder.class,
         DependencyProvider.class,
         SystemUIBinder.class,
-        SystemUICoreStartableModule.class,
+        ParanoidSystemUICoreStartableModule.class,
         SystemUIModule.class,
         ParanoidSystemUIModule.class})
 public interface ParanoidSysUIComponent extends SysUIComponent {
