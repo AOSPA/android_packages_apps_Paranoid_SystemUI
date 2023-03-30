@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2023 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +17,7 @@
 
 package co.aospa.systemui.dagger
 
+import co.aospa.systemui.volume.ParanoidVolumeUI
 import com.android.keyguard.KeyguardBiometricLockoutLogger
 import com.android.systemui.ChooserSelector
 import com.android.systemui.CoreStartable
@@ -44,7 +46,6 @@ import com.android.systemui.toast.ToastUI
 import com.android.systemui.usb.StorageNotification
 import com.android.systemui.util.NotificationChannels
 import com.android.systemui.util.leak.GarbageMonitor
-import com.android.systemui.volume.VolumeUI
 import com.android.systemui.wmshell.WMShell
 import dagger.Binds
 import dagger.Module
@@ -194,8 +195,8 @@ abstract class ParanoidSystemUICoreStartableModule {
     /** Inject into VolumeUI.  */
     @Binds
     @IntoMap
-    @ClassKey(VolumeUI::class)
-    abstract fun bindVolumeUI(sysui: VolumeUI): CoreStartable
+    @ClassKey(ParanoidVolumeUI::class)
+    abstract fun bindVolumeUI(sysui: ParanoidVolumeUI): CoreStartable
 
     /** Inject into WindowMagnification.  */
     @Binds
