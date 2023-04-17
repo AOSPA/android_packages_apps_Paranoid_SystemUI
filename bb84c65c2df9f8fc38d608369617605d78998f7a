@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32fddc82_ae0a4d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2023-04-17T06:56:54Z",
+      "side": 1,
+      "message": "Restoring +2 from Anay, no substantive changes since then.",
+      "revId": "bb84c65c2df9f8fc38d608369617605d78998f7a",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
