@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06206dfc_6366dc17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2023-04-28T06:34:09Z",
+      "side": 1,
+      "message": "isn\u0027t this just an action on the USB notification?  I don\u0027t see the value in making it a QS tile if so.",
+      "revId": "146d7a34a606c3ac4a782d9c39b86b3b5d2400d7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
