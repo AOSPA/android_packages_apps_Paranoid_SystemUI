@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1dfaa61_5aff23ad",
+        "filename": "src/co/aospa/systemui/qs/tiles/AlwaysOnDisplayTile.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000427
+      },
+      "writtenOn": "2023-05-05T12:46:40Z",
+      "side": 1,
+      "message": "seems backwards",
+      "revId": "dabd729dbdc5dd6eb3c011a6b88cab4b5b5ea11f",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15545673_e0d3a46e",
+        "filename": "src/co/aospa/systemui/qs/tiles/AlwaysOnDisplayTile.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000427
+      },
+      "writtenOn": "2023-05-05T12:46:40Z",
+      "side": 1,
+      "message": "just return 0, not VIEW_UNKNOWN.",
+      "revId": "dabd729dbdc5dd6eb3c011a6b88cab4b5b5ea11f",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
