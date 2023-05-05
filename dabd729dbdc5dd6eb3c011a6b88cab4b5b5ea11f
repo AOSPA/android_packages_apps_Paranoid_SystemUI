@@ -33,6 +33,24 @@
       "message": "just return 0, not VIEW_UNKNOWN.",
       "revId": "dabd729dbdc5dd6eb3c011a6b88cab4b5b5ea11f",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0321d417_277d7c2e",
+        "filename": "src/co/aospa/systemui/qs/tiles/AlwaysOnDisplayTile.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000463
+      },
+      "writtenOn": "2023-05-05T17:47:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15545673_e0d3a46e",
+      "revId": "dabd729dbdc5dd6eb3c011a6b88cab4b5b5ea11f",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
