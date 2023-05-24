@@ -16,6 +16,24 @@
       "message": "You can kill this, it\u0027s deprecated and 0 is the default",
       "revId": "5a6a13d58b782a7b8c3777ea25446684371776f2",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d33b1d4_e0fd2eb7",
+        "filename": "src/co/aospa/systemui/qs/tiles/AlwaysOnDisplayTile.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000463
+      },
+      "writtenOn": "2023-05-24T02:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88eb73c6_89fbd047",
+      "revId": "5a6a13d58b782a7b8c3777ea25446684371776f2",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
