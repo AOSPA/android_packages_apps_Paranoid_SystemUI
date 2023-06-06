@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4020fa0_6782dc6c",
+        "filename": "res/values-ru/aospa_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2023-06-06T06:16:13Z",
+      "side": 1,
+      "message": "2023",
+      "revId": "e7855005b9102ba653b65c4fa342b9ff61b94225",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
