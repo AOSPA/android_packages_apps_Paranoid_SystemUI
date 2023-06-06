@@ -24,6 +24,30 @@
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3bdc25_04e55763",
+        "filename": "res/values-ru/aospa_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2023-06-06T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a4c9140_de498178",
+      "range": {
+        "startLine": 21,
+        "startChar": 68,
+        "endLine": 21,
+        "endChar": 72
+      },
+      "revId": "3bb34551c9241177f7920c713012354cf5f51dc7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce1d89dc_6b77c41e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-06T16:11:21Z",
       "side": 1,
       "message": "\"Кофеин вкл.\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 67,
+        "endLine": 22,
+        "endChar": 70
+      },
+      "revId": "3bb34551c9241177f7920c713012354cf5f51dc7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c9cf8d_23a47af4",
+        "filename": "res/values-ru/aospa_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2023-06-06T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1d89dc_6b77c41e",
       "range": {
         "startLine": 22,
         "startChar": 67,
@@ -70,6 +118,30 @@
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "340a1f0a_c98eae3e",
+        "filename": "res/values-ru/aospa_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2023-06-06T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be3de197_e7053cbd",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "3bb34551c9241177f7920c713012354cf5f51dc7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "119f4ebf_2d754e47",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-06T16:11:21Z",
       "side": 1,
       "message": "\"Нет SIM-карты\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 42,
+        "endLine": 26,
+        "endChar": 82
+      },
+      "revId": "3bb34551c9241177f7920c713012354cf5f51dc7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c788fc44_72bcb836",
+        "filename": "res/values-ru/aospa_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2023-06-06T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "119f4ebf_2d754e47",
       "range": {
         "startLine": 26,
         "startChar": 42,
@@ -116,6 +212,30 @@
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ab0cc8_3374387c",
+        "filename": "res/values-ru/aospa_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2023-06-06T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ceecf85_bf018dd3",
+      "range": {
+        "startLine": 27,
+        "startChar": 42,
+        "endLine": 27,
+        "endChar": 91
+      },
+      "revId": "3bb34551c9241177f7920c713012354cf5f51dc7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9415a7a8_a4ac2695",
@@ -139,6 +259,30 @@
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c284aa_46dabf43",
+        "filename": "res/values-ru/aospa_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2023-06-06T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9415a7a8_a4ac2695",
+      "range": {
+        "startLine": 28,
+        "startChar": 44,
+        "endLine": 28,
+        "endChar": 66
+      },
+      "revId": "3bb34551c9241177f7920c713012354cf5f51dc7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d4a84b4_56d279f5",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-06-06T16:11:21Z",
       "side": 1,
       "message": "\"Выбрана SIM 2\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 44,
+        "endLine": 29,
+        "endChar": 67
+      },
+      "revId": "3bb34551c9241177f7920c713012354cf5f51dc7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b5ae9d_3c9f0fe1",
+        "filename": "res/values-ru/aospa_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000825
+      },
+      "writtenOn": "2023-06-06T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4a84b4_56d279f5",
       "range": {
         "startLine": 29,
         "startChar": 44,
