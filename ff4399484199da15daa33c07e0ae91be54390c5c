@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fe2553_e798b031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000579
+      },
+      "writtenOn": "2023-06-08T09:42:50Z",
+      "side": 1,
+      "message": "refer to https://github.com/PA-GK/android_frameworks_base/commit/d192a8e9ea14f92aa8264e45ca809b99ee92e2cf",
+      "revId": "ff4399484199da15daa33c07e0ae91be54390c5c",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
