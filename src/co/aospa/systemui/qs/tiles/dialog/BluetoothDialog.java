@@ -172,7 +172,7 @@ public class BluetoothDialog extends SystemUIDialog implements Window.Callback {
         mDoneButton = mDialogView.requireViewById(R.id.done_button);
         mSettingsButton = mDialogView.requireViewById(R.id.settings_button);
         mBackgroundOn = mContext.getDrawable(R.drawable.settingslib_switch_bar_bg_on);
-        mBackgroundOff = mContext.getDrawable(R.drawable.bluetooth_dialog_selected_effect);
+        mBackgroundOff = mContext.getDrawable(R.drawable.internet_dialog_selected_effect);
 
       mBluetoothToggle.setOnCheckedChangeListener(
                 (buttonView, isChecked) -> {
