@@ -54,6 +54,7 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.SignalTileView;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
+import com.android.systemui.qs.tiles.SecureQSTile;
 import com.android.systemui.statusbar.connectivity.IconState;
 import com.android.systemui.statusbar.connectivity.MobileDataIndicators;
 import com.android.systemui.statusbar.connectivity.NetworkController;
@@ -64,7 +65,7 @@ import com.android.systemui.statusbar.policy.KeyguardStateController;
 import javax.inject.Inject;
 
 /** Quick settings tile: Cellular **/
-public class CellularTile extends QSTileImpl<SignalState> {
+public class CellularTile extends SecureQSTile<SignalState> {
 
     public static final String TILE_SPEC = "cell";
 
@@ -90,7 +91,7 @@ public class CellularTile extends QSTileImpl<SignalState> {
 
     ) {
         super(host, backgroundLooper, mainHandler, falsingManager, metricsLogger,
-                statusBarStateController, activityStarter, qsLogger);
+                statusBarStateController, activityStarter, qsLogger, keyguardStateController);
         mController = networkController;
         mKeyguard = keyguardStateController;
         mDataController = mController.getMobileDataController();
@@ -116,7 +117,11 @@ public class CellularTile extends QSTileImpl<SignalState> {
     }
 
     @Override
-    protected void handleClick(@Nullable View view) {
+    protected void handleClick(@Nullable View view, boolean keyguardShowing) {
+        if (checkKeyguard(view, keyguardShowing)) {
+            return;
+        }
+
         if (getState().state == Tile.STATE_UNAVAILABLE) {
             return;
         }
