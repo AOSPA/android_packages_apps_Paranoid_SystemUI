@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e28464_be5c1f36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2023-06-11T14:59:27Z",
+      "side": 1,
+      "message": "I get and if we were Google, this would be better but I think it\u0027s confusing given what upstream is doing to be different.",
+      "revId": "65e67dcac3853671e76a5b5a0c9884a83ed0bec7",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
