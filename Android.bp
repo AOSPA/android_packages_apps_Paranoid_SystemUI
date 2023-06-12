@@ -96,6 +96,7 @@ android_app {
     required: [
         "privapp_whitelist_com.android.systemui",
         "privapp_whitelist_co.aospa.systemui",
+        "wmshell.protolog.json.gz",
     ],
     overrides: [
         "SystemUI",

@@ -23,8 +23,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {
-        GlobalModule.class})
+@Component(modules = {GlobalModule.class})
 public interface ParanoidGlobalRootComponent extends GlobalRootComponent {
 
     @Component.Builder
