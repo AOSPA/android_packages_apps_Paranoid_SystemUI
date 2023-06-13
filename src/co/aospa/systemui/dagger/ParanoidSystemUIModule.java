@@ -25,6 +25,7 @@ import android.os.Handler;
 
 import com.android.internal.logging.UiEventLogger;
 import com.android.keyguard.KeyguardViewController;
+import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.controls.controller.ControlsTileResourceConfiguration;
 import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
@@ -41,6 +42,7 @@ import com.android.systemui.qs.dagger.QSModule;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsImplementation;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
+import com.android.systemui.rotationlock.RotationLockModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeController;
 import com.android.systemui.shade.ShadeControllerImpl;
@@ -73,6 +75,7 @@ import javax.inject.Named;
 
 import co.aospa.systemui.controls.AospaControlsTileResourceConfigurationImpl;
 import co.aospa.systemui.qs.tileimpl.ParanoidQSFactoryImpl;
+import co.aospa.systemui.qs.tileimpl.ParanoidQSModule;
 import co.aospa.systemui.volume.dagger.ParanoidVolumeModule;
 import dagger.Binds;
 import dagger.Module;
@@ -83,11 +86,14 @@ import dagger.Provides;
  */
 @Module(includes = {
         AospPolicyModule.class,
+        BatterySaverModule.class,
         GestureModule.class,
         MediaModule.class,
+        ParanoidQSModule.class,
         PowerModule.class,
         QSModule.class,
         ReferenceScreenshotModule.class,
+        RotationLockModule.class,
         StartCentralSurfacesModule.class,
         StatusBarEventsModule.class,
         ParanoidVolumeModule.class
