@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package co.aospa.systemui.dagger;
 
 import static com.android.systemui.Dependency.ALLOW_NOTIFICATION_LONG_PRESS_NAME;
@@ -25,9 +26,8 @@ import android.os.Handler;
 
 import com.android.internal.logging.UiEventLogger;
 import com.android.keyguard.KeyguardViewController;
+import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.controls.controller.ControlsTileResourceConfiguration;
-import com.android.systemui.dagger.ReferenceSystemUIModule;
-import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
@@ -40,6 +40,7 @@ import com.android.systemui.power.dagger.PowerModule;
 import com.android.systemui.qs.dagger.QSModule;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsImplementation;
+import com.android.systemui.rotationlock.RotationLockModule;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeController;
@@ -73,6 +74,7 @@ import javax.inject.Named;
 
 import co.aospa.systemui.controls.AospaControlsTileResourceConfigurationImpl;
 import co.aospa.systemui.qs.tileimpl.ParanoidQSFactoryImpl;
+import co.aospa.systemui.qs.tileimpl.ParanoidQSModule;
 import co.aospa.systemui.volume.dagger.ParanoidVolumeModule;
 import dagger.Binds;
 import dagger.Module;
@@ -83,13 +85,16 @@ import dagger.Provides;
  */
 @Module(includes = {
         AospPolicyModule.class,
+        BatterySaverModule.class,
         GestureModule.class,
         MediaModule.class,
         PowerModule.class,
         QSModule.class,
         ReferenceScreenshotModule.class,
+        RotationLockModule.class,
         StartCentralSurfacesModule.class,
         StatusBarEventsModule.class,
+        ParanoidQSModule.class,
         ParanoidVolumeModule.class
 })
 public abstract class ParanoidSystemUIModule {
