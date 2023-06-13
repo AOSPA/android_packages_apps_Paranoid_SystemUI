@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package co.aospa.systemui.dagger;
 
 import com.android.systemui.dagger.DefaultComponentBinder;
@@ -34,8 +35,8 @@ import dagger.Subcomponent;
         NotificationInsetsModule.class,
         QsFrameTranslateModule.class,
         SystemUIBinder.class,
-        ParanoidSystemUICoreStartableModule.class,
         SystemUIModule.class,
+        ParanoidSystemUICoreStartableModule.class,
         ParanoidSystemUIModule.class})
 public interface ParanoidSysUIComponent extends SysUIComponent {
     @SysUISingleton
