@@ -19,7 +19,6 @@ package co.aospa.systemui.dagger
 
 import co.aospa.systemui.volume.ParanoidVolumeUI
 import com.android.keyguard.KeyguardBiometricLockoutLogger
-import com.android.systemui.ChooserSelector
 import com.android.systemui.CoreStartable
 import com.android.systemui.LatencyTester
 import com.android.systemui.ScreenDecorations
@@ -28,12 +27,16 @@ import com.android.systemui.accessibility.SystemActions
 import com.android.systemui.accessibility.WindowMagnification
 import com.android.systemui.biometrics.AuthController
 import com.android.systemui.clipboardoverlay.ClipboardListener
-import com.android.systemui.dagger.SystemUICoreStartableModule;
+import com.android.systemui.controls.dagger.StartControlsStartableModule
 import com.android.systemui.dagger.qualifiers.PerUser
+import com.android.systemui.dreams.DreamMonitor
 import com.android.systemui.globalactions.GlobalActionsComponent
+import com.android.systemui.keyboard.PhysicalKeyboardCoreStartable
 import com.android.systemui.keyboard.KeyboardUI
 import com.android.systemui.keyguard.KeyguardViewMediator
+import com.android.systemui.keyguard.data.quickaffordance.MuteQuickAffordanceCoreStartable
 import com.android.systemui.log.SessionTracker
+import com.android.systemui.media.dialog.MediaOutputSwitcherDialogUI
 import com.android.systemui.media.RingtonePlayer
 import com.android.systemui.media.taptotransfer.MediaTttCommandLineHelper
 import com.android.systemui.media.taptotransfer.receiver.MediaTttChipControllerReceiver
@@ -61,21 +64,18 @@ import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 
 /**
- * Fork of [SystemUICoreStartableModule]
+ * Collection of {@link CoreStartable}s that should be run on AOSP.
  */
-@Module(includes = [MultiUserUtilsModule::class])
+@Module(includes = [
+    MultiUserUtilsModule::class,
+    StartControlsStartableModule::class
+])
 abstract class ParanoidSystemUICoreStartableModule {
     /** Inject into AuthController.  */
     @Binds
     @IntoMap
     @ClassKey(AuthController::class)
     abstract fun bindAuthController(service: AuthController): CoreStartable
-
-    /** Inject into ChooserCoreStartable. */
-    @Binds
-    @IntoMap
-    @ClassKey(ChooserSelector::class)
-    abstract fun bindChooserSelector(sysui: ChooserSelector): CoreStartable
 
     /** Inject into ClipboardListener.  */
     @Binds
@@ -124,7 +124,7 @@ abstract class ParanoidSystemUICoreStartableModule {
     @IntoMap
     @ClassKey(KeyguardBiometricLockoutLogger::class)
     abstract fun bindKeyguardBiometricLockoutLogger(
-            sysui: KeyguardBiometricLockoutLogger
+        sysui: KeyguardBiometricLockoutLogger
     ): CoreStartable
 
     /** Inject into KeyguardViewMediator.  */
@@ -212,6 +212,12 @@ abstract class ParanoidSystemUICoreStartableModule {
     @ClassKey(ToastUI::class)
     abstract fun bindToastUI(service: ToastUI): CoreStartable
 
+    /** Inject into MediaOutputSwitcherDialogUI.  */
+    @Binds
+    @IntoMap
+    @ClassKey(MediaOutputSwitcherDialogUI::class)
+    abstract fun MediaOutputSwitcherDialogUI(sysui: MediaOutputSwitcherDialogUI): CoreStartable
+
     /** Inject into VolumeUI.  */
     @Binds
     @IntoMap
@@ -274,4 +280,23 @@ abstract class ParanoidSystemUICoreStartableModule {
     @IntoMap
     @ClassKey(StylusUsiPowerStartable::class)
     abstract fun bindStylusUsiPowerStartable(sysui: StylusUsiPowerStartable): CoreStartable
+
+   @Binds
+    @IntoMap
+    @ClassKey(PhysicalKeyboardCoreStartable::class)
+    abstract fun bindKeyboardCoreStartable(listener: PhysicalKeyboardCoreStartable): CoreStartable
+
+    /** Inject into MuteQuickAffordanceCoreStartable*/
+    @Binds
+    @IntoMap
+    @ClassKey(MuteQuickAffordanceCoreStartable::class)
+    abstract fun bindMuteQuickAffordanceCoreStartable(
+            sysui: MuteQuickAffordanceCoreStartable
+    ): CoreStartable
+
+    /**Inject into DreamMonitor */
+    @Binds
+    @IntoMap
+    @ClassKey(DreamMonitor::class)
+    abstract fun bindDreamMonitor(sysui: DreamMonitor): CoreStartable
 }
