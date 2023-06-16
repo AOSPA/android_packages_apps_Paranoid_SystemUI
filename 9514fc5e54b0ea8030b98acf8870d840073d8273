@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4e4922_f7af9904",
+        "filename": "src/co/aospa/systemui/qs/tileimpl/ParanoidQSFactoryImpl.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2023-06-16T11:43:26Z",
+      "side": 1,
+      "message": "Looks like you can remove this and use the default AOSP one",
+      "revId": "9514fc5e54b0ea8030b98acf8870d840073d8273",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867006d5_8a3e08af",
+        "filename": "src/co/aospa/systemui/dagger/ParanoidSystemUICoreStartableModule.kt",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2023-06-16T11:43:26Z",
+      "side": 0,
+      "message": "This import needs to stay for the comment",
+      "revId": "dfbf9f43115b399f5789d4d022449fafdcef5c18",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf2b435_91e4fb16",
+        "filename": "src/co/aospa/systemui/dagger/ParanoidSystemUICoreStartableModule.kt",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2023-06-16T11:43:26Z",
+      "side": 0,
+      "message": "Please leave that comment there, its helpful",
+      "revId": "dfbf9f43115b399f5789d4d022449fafdcef5c18",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097482a4_1f972399",
+        "filename": "src/co/aospa/systemui/dagger/ParanoidSystemUIModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2023-06-16T11:43:26Z",
+      "side": 0,
+      "message": "This needs to stay too",
+      "revId": "dfbf9f43115b399f5789d4d022449fafdcef5c18",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
