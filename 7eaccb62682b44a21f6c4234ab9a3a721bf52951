@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceae5ef9_5c3fdf6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000541
+      },
+      "writtenOn": "2023-06-18T21:54:57Z",
+      "side": 1,
+      "message": "verified tile is back",
+      "revId": "7eaccb62682b44a21f6c4234ab9a3a721bf52951",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
