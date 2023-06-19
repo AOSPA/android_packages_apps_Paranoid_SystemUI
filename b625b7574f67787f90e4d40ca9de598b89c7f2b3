@@ -16,6 +16,24 @@
       "message": "I would add location as well",
       "revId": "b625b7574f67787f90e4d40ca9de598b89c7f2b3",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e93b2982_37367831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000579
+      },
+      "writtenOn": "2023-06-19T02:20:33Z",
+      "side": 1,
+      "message": "https://github.com/gotenksIN/android_frameworks_base/commit/56d612be83b046f7cb75225cdce8c1d6410d46a6",
+      "parentUuid": "cdd9b26f_44d00c9e",
+      "revId": "b625b7574f67787f90e4d40ca9de598b89c7f2b3",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
