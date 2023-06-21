@@ -17,6 +17,7 @@ android_library {
     resource_dirs: [
         "res",
     ],
+    use_resource_processor: true,
     static_libs: [
         "SystemUI-core",
         "vendor.aospa.powershare-V1-java",
@@ -36,6 +37,7 @@ android_app {
     static_libs: [
         "ParanoidSystemUI-core",
     ],
+    use_resource_processor: true,
     use_embedded_native_libs: true,
     platform_apis: true,
     system_ext_specific: true,
