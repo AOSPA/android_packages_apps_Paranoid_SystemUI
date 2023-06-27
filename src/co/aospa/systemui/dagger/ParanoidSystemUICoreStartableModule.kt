@@ -51,6 +51,7 @@ import com.android.systemui.settings.dagger.MultiUserUtilsModule
 import com.android.systemui.shortcut.ShortcutKeyDispatcher
 import com.android.systemui.statusbar.notification.InstantAppNotifier
 import com.android.systemui.statusbar.phone.KeyguardLiftController
+import com.android.systemui.statusbar.phone.LockscreenWallpaper
 import com.android.systemui.stylus.StylusUsiPowerStartable
 import com.android.systemui.temporarydisplay.chipbar.ChipbarCoordinator
 import com.android.systemui.theme.ThemeOverlayController
@@ -297,4 +298,10 @@ abstract class ParanoidSystemUICoreStartableModule {
     @IntoMap
     @ClassKey(AssistantAttentionMonitor::class)
     abstract fun bindAssistantAttentionMonitor(sysui: AssistantAttentionMonitor): CoreStartable
+
+    /** Inject into LocskcreenWallpaper. */
+    @Binds
+    @IntoMap
+    @ClassKey(LockscreenWallpaper::class)
+    abstract fun bindLockscreenWallpaper(sysui: LockscreenWallpaper): CoreStartable
 }
