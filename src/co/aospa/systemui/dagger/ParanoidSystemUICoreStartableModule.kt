@@ -52,6 +52,7 @@ import com.android.systemui.shortcut.ShortcutKeyDispatcher
 import com.android.systemui.statusbar.notification.InstantAppNotifier
 import com.android.systemui.statusbar.phone.KeyguardLiftController
 import com.android.systemui.statusbar.phone.LockscreenWallpaper;
+import com.android.systemui.statusbar.phone.ScrimController;
 import com.android.systemui.stylus.StylusUsiPowerStartable
 import com.android.systemui.temporarydisplay.chipbar.ChipbarCoordinator
 import com.android.systemui.theme.ThemeOverlayController
@@ -304,4 +305,11 @@ abstract class ParanoidSystemUICoreStartableModule {
     @IntoMap
     @ClassKey(LockscreenWallpaper::class)
     abstract fun bindLockscreenWallpaper(sysui: LockscreenWallpaper): CoreStartable
+
+    /** Inject into ScrimController. */
+    @Binds
+    @IntoMap
+    @ClassKey(ScrimController.class)
+    abstract fun bindScrimController(sysui: ScrimController): CoreStartable
+
 }
