@@ -78,6 +78,7 @@ import com.android.systemui.statusbar.policy.IndividualSensorPrivacyController;
 import com.android.systemui.statusbar.policy.IndividualSensorPrivacyControllerImpl;
 import com.android.systemui.statusbar.policy.SensorPrivacyController;
 import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
+import com.android.systemui.wallpapers.dagger.WallpaperModule;
 
 import javax.inject.Named;
 
@@ -109,7 +110,8 @@ import dagger.Provides;
         StatusBarEventsModule.class,
         ParanoidQSModule.class,
         ParanoidVolumeModule.class,
-        KeyboardShortcutsModule.class
+        KeyboardShortcutsModule.class,
+        WallpaperModule.class
 })
 public abstract class ParanoidSystemUIModule {
 
