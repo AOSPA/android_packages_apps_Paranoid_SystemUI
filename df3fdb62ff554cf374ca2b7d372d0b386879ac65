@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fdb5acd_e9a8d200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2023-07-04T06:37:03Z",
+      "side": 1,
+      "message": "If that\u0027s the case I am all in",
+      "revId": "df3fdb62ff554cf374ca2b7d372d0b386879ac65",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
