@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "194e57fb_540ff742",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-07-04T06:22:11Z",
+      "side": 1,
+      "message": "This is provided as optional toggles. People who want the traditional way can opt-in.",
+      "revId": "77ce5848143dbaa5e9b143b64bd26448d57204b8",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
