@@ -53,6 +53,7 @@ import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeController;
 import com.android.systemui.shade.ShadeControllerImpl;
 import com.android.systemui.shade.ShadeExpansionStateManager;
+import com.android.systemui.shade.ShadeModule;
 import com.android.systemui.statusbar.CommandQueue;
 import com.android.systemui.statusbar.KeyboardShortcutsModule;
 import com.android.systemui.statusbar.NotificationLockscreenUserManager;
@@ -102,6 +103,7 @@ import dagger.Provides;
         ReferenceScreenshotModule.class,
         RotationLockModule.class,
         SceneContainerFrameworkModule.class,
+        ShadeModule.class,
         ShutdownUiModule.class,
         StartCentralSurfacesModule.class,
         StatusBarEventsModule.class,
