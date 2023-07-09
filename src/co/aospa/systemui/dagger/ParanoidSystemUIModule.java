@@ -27,6 +27,7 @@ import android.os.Handler;
 import com.android.internal.logging.UiEventLogger;
 import com.android.keyguard.KeyguardViewController;
 import com.android.systemui.battery.BatterySaverModule;
+import com.android.systemui.biometrics.FingerprintInteractiveToAuthProvider;
 import com.android.systemui.controls.controller.ControlsTileResourceConfiguration;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.qualifiers.Main;
@@ -208,4 +209,7 @@ public abstract class ParanoidSystemUIModule {
 
     @Binds
     abstract ControlsTileResourceConfiguration bindControlsTileResourceConfiguration(AospaControlsTileResourceConfigurationImpl configuration);
+
+    @Binds
+    abstract FingerprintInteractiveToAuthProvider bindFingerprintInteractiveToAuthProviderImpl(FingerprintInteractiveToAuthProviderImpl impl);
 }
