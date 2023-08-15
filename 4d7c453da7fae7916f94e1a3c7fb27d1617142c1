@@ -1,0 +1,10 @@
+Verified+1: Fabian Leutenegger <fabian.leutenegger@bluewin.ch>
+Verified+1: 007 <john.smith@unused.email>
+Code-Review+2: Jake Weinstein <jake@aospa.co>
+Code-Review+1: Fabian Leutenegger <fabian.leutenegger@bluewin.ch>
+Code-Review+1: 007 <john.smith@unused.email>
+Submitted-by: Fabian Leutenegger <fabian.leutenegger@bluewin.ch>
+Submitted-at: Tue, 15 Aug 2023 16:12:51 +0000
+Reviewed-on: https://gerrit.aospa.co/c/AOSPA/android_packages_apps_Paranoid_SystemUI/+/32225
+Project: AOSPA/android_packages_apps_Paranoid_SystemUI
+Branch: refs/heads/topaz
