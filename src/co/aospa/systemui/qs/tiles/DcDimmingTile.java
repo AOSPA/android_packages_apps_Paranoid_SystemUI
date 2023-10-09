@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Paranoid Android
+ * Copyright (C) 2023 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,14 @@ package co.aospa.systemui.qs.tiles;
 
 import static android.hardware.display.DcDimmingManager.MODE_AUTO_TIME;
 
-import android.content.Context;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
 import android.hardware.display.DcDimmingManager;
-import android.net.Uri;
 import android.os.Handler;
-import android.os.UserHandle;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.text.TextUtils;
@@ -35,7 +34,6 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.systemui.R;
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
@@ -44,6 +42,7 @@ import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.plugins.qs.QSTile;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 
@@ -59,6 +58,7 @@ public class DcDimmingTile extends QSTileImpl<QSTile.BooleanState> {
     @Inject
     public DcDimmingTile(
             QSHost host,
+            QsEventLogger uiEventLogger,
             @Background Looper backgroundLooper,
             @Main Handler mainHandler,
             FalsingManager falsingManager,
@@ -67,11 +67,11 @@ public class DcDimmingTile extends QSTileImpl<QSTile.BooleanState> {
             ActivityStarter activityStarter,
             QSLogger qsLogger
     ) {
-        super(host, backgroundLooper, mainHandler, falsingManager, metricsLogger, statusBarStateController,
-                activityStarter, qsLogger);
+        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
+                statusBarStateController, activityStarter, qsLogger);
         mDcDimmingManager = (DcDimmingManager) mContext.getSystemService(Context.DC_DIM_SERVICE);
         if (isAvailable()) {
-            SettingsObserver settingsObserver = new SettingsObserver(new Handler());
+            SettingsObserver settingsObserver = new SettingsObserver(mainHandler);
             settingsObserver.observe();
         }
     }
@@ -117,11 +117,6 @@ public class DcDimmingTile extends QSTileImpl<QSTile.BooleanState> {
                 ? state.label
                 : TextUtils.concat(state.label, ", ", state.secondaryLabel);
         state.showRippleEffect = false;
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return MetricsEvent.QS_CUSTOM;
     }
 
     @Override

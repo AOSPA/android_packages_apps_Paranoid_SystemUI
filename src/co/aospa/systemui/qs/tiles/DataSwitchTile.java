@@ -32,6 +32,7 @@ import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 
@@ -68,6 +69,7 @@ public class DataSwitchTile extends QSTileImpl<BooleanState> {
     @Inject
     public DataSwitchTile(
             QSHost host,
+            QsEventLogger uiEventLogger,
             @Background Looper backgroundLooper,
             @Main Handler mainHandler,
             FalsingManager falsingManager,
@@ -76,7 +78,7 @@ public class DataSwitchTile extends QSTileImpl<BooleanState> {
             ActivityStarter activityStarter,
             QSLogger qsLogger
     ) {
-        super(host, backgroundLooper, mainHandler, falsingManager, metricsLogger,
+        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger);
         mSubscriptionManager = SubscriptionManager.from(host.getContext());
         mTelephonyManager = TelephonyManager.from(host.getContext());
@@ -165,7 +167,8 @@ public class DataSwitchTile extends QSTileImpl<BooleanState> {
     protected void handleUpdateState(BooleanState state, Object arg) {
         boolean activeSIMZero;
         if (arg == null) {
-            int defaultPhoneId = mSubscriptionManager.getDefaultDataPhoneId();
+            int defaultPhoneId = SubscriptionManager.getPhoneId(
+                    SubscriptionManager.getDefaultDataSubscriptionId());
             Log.d(TAG, "default data phone id=" + defaultPhoneId);
             activeSIMZero = defaultPhoneId == 0;
         } else {
@@ -209,11 +212,6 @@ public class DataSwitchTile extends QSTileImpl<BooleanState> {
         state.contentDescription = mContext.getString(
                 activeSIMZero ? R.string.qs_data_switch_changed_1
                         : R.string.qs_data_switch_changed_2);
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return -1;
     }
 
     /**
