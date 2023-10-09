@@ -39,7 +39,6 @@ import android.widget.Switch;
 import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settingslib.net.DataUsageController;
 import com.android.systemui.Prefs;
 import com.android.systemui.R;
@@ -51,6 +50,7 @@ import com.android.systemui.plugins.qs.QSIconView;
 import com.android.systemui.plugins.qs.QSTile.SignalState;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.SignalTileView;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
@@ -78,6 +78,7 @@ public class CellularTile extends QSTileImpl<SignalState> {
     @Inject
     public CellularTile(
             QSHost host,
+            QsEventLogger uiEventLogger,
             @Background Looper backgroundLooper,
             @Main Handler mainHandler,
             FalsingManager falsingManager,
@@ -89,7 +90,7 @@ public class CellularTile extends QSTileImpl<SignalState> {
             KeyguardStateController keyguardStateController
 
     ) {
-        super(host, backgroundLooper, mainHandler, falsingManager, metricsLogger,
+        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger);
         mController = networkController;
         mKeyguard = keyguardStateController;
@@ -234,11 +235,6 @@ public class CellularTile extends QSTileImpl<SignalState> {
             return mContext.getString(R.string.data_connection_roaming);
         }
         return cb.dataContentDescription;
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return MetricsEvent.QS_CELLULAR;
     }
 
     @Override

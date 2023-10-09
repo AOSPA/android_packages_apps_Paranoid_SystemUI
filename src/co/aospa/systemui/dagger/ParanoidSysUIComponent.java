@@ -18,6 +18,7 @@ package co.aospa.systemui.dagger;
 
 import com.android.systemui.dagger.DefaultComponentBinder;
 import com.android.systemui.dagger.DependencyProvider;
+import com.android.systemui.dagger.ReferenceSysUIComponent;
 import com.android.systemui.dagger.SysUIComponent;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.SystemUIBinder;
@@ -28,6 +29,9 @@ import com.android.systemui.statusbar.QsFrameTranslateModule;
 
 import dagger.Subcomponent;
 
+/**
+ * Fork of {@link ReferenceSysUIComponent}
+ */
 @SysUISingleton
 @Subcomponent(modules = {
         DefaultComponentBinder.class,
