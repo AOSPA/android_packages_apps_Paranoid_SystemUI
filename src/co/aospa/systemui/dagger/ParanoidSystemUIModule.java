@@ -29,6 +29,7 @@ import com.android.keyguard.KeyguardViewController;
 import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.biometrics.FingerprintInteractiveToAuthProvider;
 import com.android.systemui.controls.controller.ControlsTileResourceConfiguration;
+import com.android.systemui.dagger.ReferenceSystemUIModule;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.dock.DockManager;
@@ -40,9 +41,11 @@ import com.android.systemui.plugins.qs.QSFactory;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.power.dagger.PowerModule;
 import com.android.systemui.qs.dagger.QSModule;
+import com.android.systemui.qs.tileimpl.QSFactoryImpl;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsImplementation;
 import com.android.systemui.rotationlock.RotationLockModule;
+import com.android.systemui.scene.SceneContainerFrameworkModule;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
 import com.android.systemui.settings.dagger.MultiUserUtilsModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
@@ -50,6 +53,7 @@ import com.android.systemui.shade.ShadeController;
 import com.android.systemui.shade.ShadeControllerImpl;
 import com.android.systemui.shade.ShadeExpansionStateManager;
 import com.android.systemui.statusbar.CommandQueue;
+import com.android.systemui.statusbar.KeyboardShortcutsModule;
 import com.android.systemui.statusbar.NotificationLockscreenUserManager;
 import com.android.systemui.statusbar.NotificationLockscreenUserManagerImpl;
 import com.android.systemui.statusbar.NotificationShadeWindowController;
@@ -77,7 +81,6 @@ import javax.inject.Named;
 
 import co.aospa.systemui.biometrics.FingerprintInteractiveToAuthProviderImpl;
 import co.aospa.systemui.controls.AospaControlsTileResourceConfigurationImpl;
-import co.aospa.systemui.qs.tileimpl.ParanoidQSFactoryImpl;
 import co.aospa.systemui.qs.tileimpl.ParanoidQSModule;
 import co.aospa.systemui.volume.dagger.ParanoidVolumeModule;
 import dagger.Binds;
@@ -97,10 +100,12 @@ import dagger.Provides;
         QSModule.class,
         ReferenceScreenshotModule.class,
         RotationLockModule.class,
-        StartCentralSurfacesModule.class,
+        SceneContainerFrameworkModule.class,
         StatusBarEventsModule.class,
+        StartCentralSurfacesModule.class,
         ParanoidQSModule.class,
-        ParanoidVolumeModule.class
+        ParanoidVolumeModule.class,
+        KeyboardShortcutsModule.class
 })
 public abstract class ParanoidSystemUIModule {
 
@@ -137,7 +142,7 @@ public abstract class ParanoidSystemUIModule {
     /** */
     @Binds
     @SysUISingleton
-    public abstract QSFactory bindQSFactory(ParanoidQSFactoryImpl qsFactoryImpl);
+    public abstract QSFactory bindQSFactory(QSFactoryImpl qsFactoryImpl);
 
     @Binds
     abstract DockManager bindDockManager(DockManagerImpl dockManager);
@@ -211,8 +216,10 @@ public abstract class ParanoidSystemUIModule {
     abstract DozeHost provideDozeHost(DozeServiceHost dozeServiceHost);
 
     @Binds
-    abstract ControlsTileResourceConfiguration bindControlsTileResourceConfiguration(AospaControlsTileResourceConfigurationImpl configuration);
+    abstract ControlsTileResourceConfiguration bindControlsTileResourceConfiguration(
+            AospaControlsTileResourceConfigurationImpl configuration);
 
     @Binds
-    abstract FingerprintInteractiveToAuthProvider bindFingerprintInteractiveToAuthProviderImpl(FingerprintInteractiveToAuthProviderImpl impl);
+    abstract FingerprintInteractiveToAuthProvider bindFingerprintInteractiveToAuthProviderImpl(
+            FingerprintInteractiveToAuthProviderImpl impl);
 }

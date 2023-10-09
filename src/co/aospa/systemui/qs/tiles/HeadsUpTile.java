@@ -17,8 +17,6 @@
 
 package co.aospa.systemui.qs.tiles;
 
-import static com.android.internal.logging.MetricsLogger.VIEW_UNKNOWN;
-
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -38,6 +36,7 @@ import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.SettingObserver;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
@@ -61,6 +60,7 @@ public class HeadsUpTile extends QSTileImpl<BooleanState> {
     @Inject
     public HeadsUpTile(
             QSHost host,
+            QsEventLogger uiEventLogger,
             @Background Looper backgroundLooper,
             @Main Handler mainHandler,
             FalsingManager falsingManager,
@@ -71,7 +71,7 @@ public class HeadsUpTile extends QSTileImpl<BooleanState> {
             GlobalSettings globalSettings,
             UserTracker userTracker
     ) {
-        super(host, backgroundLooper, mainHandler, falsingManager, metricsLogger,
+        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger);
 
         mSetting = new SettingObserver(globalSettings, mHandler, Global.HEADS_UP_NOTIFICATIONS_ENABLED, userTracker.getUserId()) {
@@ -125,11 +125,6 @@ public class HeadsUpTile extends QSTileImpl<BooleanState> {
     @Override
     public CharSequence getTileLabel() {
         return mContext.getString(R.string.quick_settings_heads_up_label);
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return VIEW_UNKNOWN;
     }
 
     @Override

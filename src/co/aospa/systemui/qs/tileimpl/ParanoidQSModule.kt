@@ -16,17 +16,16 @@
 
 package co.aospa.systemui.qs.tileimpl;
 
-import com.android.systemui.qs.tileimpl.QSTileImpl
-
-import co.aospa.systemui.qs.tiles.AlwaysOnDisplayTile;
-import co.aospa.systemui.qs.tiles.BluetoothDialogTile;
-import co.aospa.systemui.qs.tiles.CaffeineTile;
+import co.aospa.systemui.qs.tiles.AlwaysOnDisplayTile
+import co.aospa.systemui.qs.tiles.BluetoothDialogTile
+import co.aospa.systemui.qs.tiles.CaffeineTile
 import co.aospa.systemui.qs.tiles.CellularTile
-import co.aospa.systemui.qs.tiles.DataSwitchTile;
-import co.aospa.systemui.qs.tiles.DcDimmingTile;
-import co.aospa.systemui.qs.tiles.HeadsUpTile;
-import co.aospa.systemui.qs.tiles.PowerShareTile;
+import co.aospa.systemui.qs.tiles.DataSwitchTile
+import co.aospa.systemui.qs.tiles.DcDimmingTile
+import co.aospa.systemui.qs.tiles.HeadsUpTile
+import co.aospa.systemui.qs.tiles.PowerShareTile
 import co.aospa.systemui.qs.tiles.WifiTile
+import com.android.systemui.qs.tileimpl.QSTileImpl
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

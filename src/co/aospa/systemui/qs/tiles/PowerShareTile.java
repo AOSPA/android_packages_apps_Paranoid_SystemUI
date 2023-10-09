@@ -31,7 +31,6 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.systemui.R;
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
@@ -40,15 +39,16 @@ import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.statusbar.policy.BatteryController;
 
-import vendor.aospa.powershare.IPowerShare;
-
 import java.util.NoSuchElementException;
 
 import javax.inject.Inject;
+
+import vendor.aospa.powershare.IPowerShare;
 
 public class PowerShareTile extends QSTileImpl<BooleanState>
         implements BatteryController.BatteryStateChangeCallback {
@@ -66,6 +66,7 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
     @Inject
     public PowerShareTile(
             QSHost host,
+            QsEventLogger uiEventLogger,
             @Background Looper backgroundLooper,
             @Main Handler mainHandler,
             FalsingManager falsingManager,
@@ -74,7 +75,7 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
             ActivityStarter activityStarter,
             QSLogger qsLogger,
             BatteryController batteryController) {
-        super(host, backgroundLooper, mainHandler, falsingManager, metricsLogger,
+        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger);
         mPowerShare = getPowerShare();
         if (mPowerShare == null) {
@@ -207,11 +208,6 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
         } else {
             state.state = Tile.STATE_ACTIVE;
         }
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return MetricsEvent.QS_CUSTOM;
     }
 
     @Override

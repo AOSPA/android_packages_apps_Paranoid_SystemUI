@@ -21,7 +21,6 @@
 
 package co.aospa.systemui.qs.tiles;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
@@ -29,21 +28,20 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
-
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.FalsingManager;
-import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
+import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.statusbar.policy.BluetoothController;
 
-import co.aospa.systemui.qs.tiles.dialog.BluetoothDialogFactory;
-
 import javax.inject.Inject;
+
+import co.aospa.systemui.qs.tiles.dialog.BluetoothDialogFactory;
 
 public class BluetoothDialogTile extends BluetoothTile {
 
@@ -55,6 +53,7 @@ public class BluetoothDialogTile extends BluetoothTile {
     @Inject
     public BluetoothDialogTile(
             QSHost host,
+            QsEventLogger uiEventLogger,
             @Background Looper backgroundLooper,
             @Main Handler mainHandler,
             FalsingManager falsingManager,
@@ -65,7 +64,7 @@ public class BluetoothDialogTile extends BluetoothTile {
             BluetoothController bluetoothController,
             BluetoothDialogFactory bluetoothDialogFactory
     ) {
-        super(host, backgroundLooper, mainHandler, falsingManager, metricsLogger,
+        super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger, bluetoothController);
         mHandler = mainHandler;
         mBluetoothDialogFactory = bluetoothDialogFactory;

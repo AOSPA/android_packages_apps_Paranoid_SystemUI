@@ -1,6 +1,6 @@
 /*
  * Copyright 2019 CypherOS
- * Copyright 2014-2020 Paranoid Android
+ * Copyright 2014-2023 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 
 package co.aospa.systemui.tristate;
 
-import static android.view.Surface.ROTATION_90;
 import static android.view.Surface.ROTATION_180;
 import static android.view.Surface.ROTATION_270;
+import static android.view.Surface.ROTATION_90;
 
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -32,11 +32,9 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
 import android.hardware.display.DisplayManagerGlobal;
 import android.media.AudioManager;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Display;
 import android.view.OrientationEventListener;
@@ -46,7 +44,6 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.systemui.Dependency;
 import com.android.systemui.R;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.plugins.VolumeDialogController;
@@ -77,6 +74,7 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
     private static final int DIALOG_TIMEOUT = 2000;
 
     private Context mContext;
+    private final ConfigurationController mConfigurationController;
     private final VolumeDialogController mVolumeDialogController;
     private final Callbacks mVolumeDialogCallback = new Callbacks() {
         @Override
@@ -109,6 +107,9 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
         @Override
         public void onCaptionComponentStateChanged(
                 Boolean isComponentEnabled, Boolean fromTooltip) {}
+
+        @Override
+        public void onShowCsdWarning(int csdWarning, int durationMs) { }
 
         @Override
         public void onConfigurationChanged() {
@@ -173,7 +174,8 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
     }
 
     @Inject
-    public TriStateUiControllerImpl(Context context) {
+    public TriStateUiControllerImpl(Context context, VolumeDialogController volumeDialogController,
+            ConfigurationController configurationController) {
         mContext = context;
         mHandler = new H(this);
         mOrientationListener = new OrientationEventListener(mContext, 3) {
@@ -182,7 +184,8 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
                 checkOrientationType();
             }
         };
-        mVolumeDialogController = (VolumeDialogController) Dependency.get(VolumeDialogController.class);
+        mVolumeDialogController = volumeDialogController;
+        mConfigurationController = configurationController;
         IntentFilter ringerChanged = new IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION);
         mContext.registerReceiver(mRingerStateReceiver, ringerChanged);
     }
@@ -203,14 +206,14 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
         mWindowType = windowType;
         mDensity = mContext.getResources().getConfiguration().densityDpi;
         mListener = listener;
-        ((ConfigurationController) Dependency.get(ConfigurationController.class)).addCallback(this);
+        mConfigurationController.addCallback(this);
         mVolumeDialogController.addCallback(mVolumeDialogCallback, mHandler);
         initDialog();
     }
 
     @Override
     public void destroy() {
-        ((ConfigurationController) Dependency.get(ConfigurationController.class)).removeCallback(this);
+        mConfigurationController.removeCallback(this);
         mVolumeDialogController.removeCallback(mVolumeDialogCallback);
         mContext.unregisterReceiver(mRingerStateReceiver);
     }

@@ -1,12 +1,10 @@
 package co.aospa.systemui.controls
 
 import android.content.ComponentName
-
+import com.android.systemui.R
 import com.android.systemui.controls.controller.ControlsController
 import com.android.systemui.controls.controller.ControlsTileResourceConfiguration
 import com.android.systemui.dagger.SysUISingleton
-import com.android.systemui.R
-
 import javax.inject.Inject
 
 @SysUISingleton
@@ -23,6 +21,8 @@ class AospaControlsTileResourceConfigurationImpl @Inject constructor(
         }
         return R.drawable.controls_icon
     }
+
+    override fun getPackageName(): String? = null
 
     override fun getTileTitleId(): Int {
         if (componentName.getPackageName().equals(GOOGLE_HOME_PACKAGE)) {
