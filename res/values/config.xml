@@ -14,4 +14,7 @@
     <!-- Determines whether the shell features all run on another thread. -->
     <bool name="config_enableShellMainThread">true</bool>
 
+    <!-- Whether or not lockscreen shortcuts can be customized -->
+    <bool name="custom_lockscreen_shortcuts_enabled">true</bool>
+
 </resources>
