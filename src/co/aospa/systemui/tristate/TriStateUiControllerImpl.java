@@ -274,7 +274,7 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
                 int gravity = mWindowLayoutParams.gravity;
                 switch (mTriStateMode) {
                     case MODE_SILENT:
-                        iconId = R.drawable.ic_volume_ringer_mute;
+                        iconId = R.drawable.ic_speaker_mute;
                         textId = R.string.volume_ringer_status_silent;
                         break;
                     case MODE_VIBRATE:
