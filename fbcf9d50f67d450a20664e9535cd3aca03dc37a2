@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6265b3_bf3ff465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000541
+      },
+      "writtenOn": "2023-10-28T07:19:05Z",
+      "side": 1,
+      "message": "i want to wait how we handle disabling split notification / ringer, and how this behaves with it, if at all",
+      "revId": "fbcf9d50f67d450a20664e9535cd3aca03dc37a2",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
