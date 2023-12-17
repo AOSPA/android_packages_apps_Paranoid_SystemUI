@@ -42,6 +42,7 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
+import com.android.systemui.shade.NotificationShadeWindowView;
 import com.android.systemui.statusbar.policy.BatteryController;
 
 import java.util.NoSuchElementException;
@@ -55,6 +56,7 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
 
     public static final String TILE_SPEC = "powershare";
     private IPowerShare mPowerShare;
+    private NotificationShadeWindowView mNotificationShadeWindowView;
     private BatteryController mBatteryController;
     private NotificationManager mNotificationManager;
     private Notification mNotification;
@@ -74,13 +76,15 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
             StatusBarStateController statusBarStateController,
             ActivityStarter activityStarter,
             QSLogger qsLogger,
-            BatteryController batteryController) {
+            BatteryController batteryController,
+            NotificationShadeWindowView notificationShadeWindowView) {
         super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger);
         mPowerShare = getPowerShare();
         if (mPowerShare == null) {
             return;
         }
+        mNotificationShadeWindowView = notificationShadeWindowView;
 
         mBatteryController = batteryController;
         mNotificationManager = mContext.getSystemService(NotificationManager.class);
