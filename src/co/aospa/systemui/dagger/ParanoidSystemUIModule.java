@@ -149,9 +149,6 @@ public abstract class ParanoidSystemUIModule {
     @Binds
     abstract DockManager bindDockManager(DockManagerImpl dockManager);
 
-    @Binds
-    abstract ShadeController provideShadeController(ShadeControllerImpl shadeController);
-
     @SysUISingleton
     @Provides
     @Named(ALLOW_NOTIFICATION_LONG_PRESS_NAME)
