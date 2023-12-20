@@ -23,6 +23,7 @@ import com.android.systemui.dagger.SysUIComponent;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.SystemUIBinder;
 import com.android.systemui.dagger.SystemUIModule;
+import com.android.systemui.globalactions.ShutdownUiModule;
 import com.android.systemui.keyguard.CustomizationProvider;
 import com.android.systemui.shade.ShadeModule;
 import com.android.systemui.statusbar.NotificationInsetsModule;
@@ -40,6 +41,7 @@ import dagger.Subcomponent;
         NotificationInsetsModule.class,
         QsFrameTranslateModule.class,
         ShadeModule.class,
+        ShutdownUiModule.class,
         SystemUIBinder.class,
         SystemUIModule.class,
         ParanoidSystemUICoreStartableModule.class,
