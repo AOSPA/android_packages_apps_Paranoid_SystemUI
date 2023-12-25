@@ -18,7 +18,7 @@
 
     <application
         tools:replace="android:appComponentFactory"
-        android:appComponentFactory=".SystemUIAppComponentFactory">
+        android:appComponentFactory=".PhoneSystemUIAppComponentFactory">
 
         <!-- Content goes here -->
 

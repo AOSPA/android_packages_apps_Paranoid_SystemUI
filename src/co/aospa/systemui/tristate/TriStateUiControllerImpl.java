@@ -109,6 +109,10 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
                 Boolean isComponentEnabled, Boolean fromTooltip) {}
 
         @Override
+        public void onCaptionEnabledStateChanged(
+                Boolean isEnabled, Boolean checkBeforeSwitch) { }
+
+        @Override
         public void onShowCsdWarning(int csdWarning, int durationMs) { }
 
         @Override

@@ -116,7 +116,6 @@ public class DcDimmingTile extends QSTileImpl<QSTile.BooleanState> {
         state.contentDescription = TextUtils.isEmpty(state.secondaryLabel)
                 ? state.label
                 : TextUtils.concat(state.label, ", ", state.secondaryLabel);
-        state.showRippleEffect = false;
     }
 
     @Override
