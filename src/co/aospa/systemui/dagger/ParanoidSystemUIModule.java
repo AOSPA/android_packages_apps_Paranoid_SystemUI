@@ -35,7 +35,6 @@ import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
-import com.android.systemui.globalactions.ShutdownUiModule;
 import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.navigationbar.gestural.GestureModule;
 import com.android.systemui.plugins.qs.QSFactory;
@@ -50,7 +49,6 @@ import com.android.systemui.screenshot.ReferenceScreenshotModule;
 import com.android.systemui.settings.dagger.MultiUserUtilsModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeExpansionStateManager;
-import com.android.systemui.shade.ShadeModule;
 import com.android.systemui.statusbar.CommandQueue;
 import com.android.systemui.statusbar.KeyboardShortcutsModule;
 import com.android.systemui.statusbar.NotificationLockscreenUserManager;
@@ -100,8 +98,6 @@ import dagger.Provides;
         QSModule.class,
         ReferenceScreenshotModule.class,
         RotationLockModule.class,
-        ShadeModule.class,
-        ShutdownUiModule.class,
         StartCentralSurfacesModule.class,
         StatusBarEventsModule.class,
         ParanoidQSModule.class,
