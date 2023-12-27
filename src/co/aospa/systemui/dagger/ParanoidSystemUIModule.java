@@ -100,8 +100,6 @@ import dagger.Provides;
         QSModule.class,
         ReferenceScreenshotModule.class,
         RotationLockModule.class,
-        ShadeModule.class,
-        ShutdownUiModule.class,
         StartCentralSurfacesModule.class,
         StatusBarEventsModule.class,
         ParanoidQSModule.class,
