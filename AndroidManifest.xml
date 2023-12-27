@@ -18,7 +18,7 @@
 
     <application
         tools:replace="android:appComponentFactory"
-        android:appComponentFactory=".PhoneSystemUIAppComponentFactory">
+        android:appComponentFactory="co.aospa.systemui.ParanoidSystemUIAppComponentFactory">
 
         <!-- Content goes here -->
 
