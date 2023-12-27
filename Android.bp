@@ -8,25 +8,16 @@ package {
 }
 
 android_library {
-    name: "ParanoidSystemUI-res",
-    manifest: "AndroidManifest.xml",
-    resource_dirs: [
-        "res",
-    ],
-    static_libs: [
-        "SystemUI-core",
-    ],
-}
-
-android_library {
     name: "ParanoidSystemUI-core",
     srcs: [
         "src/**/*.kt",
         "src/**/*.java",
         "src/**/I*.aidl",
     ],
+    resource_dirs: [
+        "res",
+    ],
     static_libs: [
-        "ParanoidSystemUI-res",
         "SystemUI-core",
         "vendor.aospa.powershare-V1-java",
     ],
