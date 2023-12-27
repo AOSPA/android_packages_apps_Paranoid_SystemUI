@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b34a5eb_ff861c20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2023-12-27T02:22:49Z",
+      "side": 1,
+      "message": "Can you remove their imports too, I don\u0027t think we need them.",
+      "revId": "73de402f4c829dc71010decaf255b2bf3f5e2b6a",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
