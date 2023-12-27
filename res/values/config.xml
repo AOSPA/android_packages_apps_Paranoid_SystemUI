@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- SystemUIFactory component -->
-    <string name="config_systemUIFactoryComponent" translatable="false">
-        co.aospa.systemui.ParanoidSystemUIInitializer
-    </string>
-
     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
     <string name="quick_settings_tiles_stock" translatable="false">
         internet,wifi,cell,bt,flashlight,dnd,alarm,airplane,nfc,controls,wallet,rotation,battery,cast,screenrecord,mictoggle,cameratoggle,location,hotspot,inversion,saver,dark,work,night,reverse,reduce_brightness,qr_code_scanner,onehanded,color_correction,dream,caffeine,dataswitch,heads_up,dc_dimming,aod,powershare
