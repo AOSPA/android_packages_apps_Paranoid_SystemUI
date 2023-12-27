@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3dcf79_36c605dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000541
+      },
+      "writtenOn": "2023-12-27T16:50:46Z",
+      "side": 1,
+      "message": "error: packages/apps/Paranoid/SystemUI/Android.bp:20:27: unrecognized property \"use_resource_processor\"",
+      "revId": "3c016532c145cd1caa247e27142760654140948f",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
