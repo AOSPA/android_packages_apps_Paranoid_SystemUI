@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d850d59_9d6b9741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000143
+      },
+      "writtenOn": "2023-12-28T08:49:57Z",
+      "side": 1,
+      "message": "\"Use Bluetooth\" sounds weird to me when comparing to the \"Internet\" tile",
+      "revId": "17319a038222a53bcb9b36058a773252c6aced65",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
