@@ -16,6 +16,41 @@
       "message": "\"Use Bluetooth\" sounds weird to me when comparing to the \"Internet\" tile",
       "revId": "17319a038222a53bcb9b36058a773252c6aced65",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a15daf_da670a0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000469
+      },
+      "writtenOn": "2023-12-28T09:12:26Z",
+      "side": 1,
+      "message": "Okay",
+      "revId": "17319a038222a53bcb9b36058a773252c6aced65",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c42cbe0_56d4b529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000469
+      },
+      "writtenOn": "2023-12-28T09:12:26Z",
+      "side": 1,
+      "message": "Okay but these are literally the strings that aosp is about to ship, so it\u0027s just a matter of time anyway",
+      "parentUuid": "7d850d59_9d6b9741",
+      "revId": "17319a038222a53bcb9b36058a773252c6aced65",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
