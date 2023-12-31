@@ -69,6 +69,23 @@
       "parentUuid": "7c42cbe0_56d4b529",
       "revId": "17319a038222a53bcb9b36058a773252c6aced65",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "365cc820_342c42b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2023-12-31T06:50:02Z",
+      "side": 1,
+      "message": "I agree with Fabian, this is awkward",
+      "revId": "17319a038222a53bcb9b36058a773252c6aced65",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
