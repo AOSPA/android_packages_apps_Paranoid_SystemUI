@@ -16,6 +16,24 @@
       "message": "not sure this is the answer.  seems nice to not have to do to settings to pair devices, but already paired devices should be first on the list.",
       "revId": "263a16939854ded66740bdcc8254f13bebc555e2",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1120eb49_7a82b5c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000469
+      },
+      "writtenOn": "2024-01-28T10:34:14Z",
+      "side": 1,
+      "message": "no this fixes a different issue",
+      "parentUuid": "e6ff3c55_c783cd98",
+      "revId": "263a16939854ded66740bdcc8254f13bebc555e2",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
