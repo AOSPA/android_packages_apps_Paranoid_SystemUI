@@ -34,6 +34,24 @@
       "parentUuid": "e6ff3c55_c783cd98",
       "revId": "263a16939854ded66740bdcc8254f13bebc555e2",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90971d62_a2396a70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000469
+      },
+      "writtenOn": "2024-01-28T10:35:23Z",
+      "side": 1,
+      "message": "it fixes a known device still showing up in the dialog list after we just unpaired it.",
+      "parentUuid": "1120eb49_7a82b5c3",
+      "revId": "263a16939854ded66740bdcc8254f13bebc555e2",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
