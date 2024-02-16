@@ -19,8 +19,10 @@
 package co.aospa.systemui.qs.tiles;
 
 import android.content.Intent;
+import android.database.ContentObserver;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.view.View;
@@ -34,6 +36,7 @@ import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
+import com.android.systemui.plugins.qs.QSTile.State;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.QsEventLogger;
@@ -46,7 +49,7 @@ import com.android.systemui.util.settings.SecureSettings;
 
 import javax.inject.Inject;
 
-public class AlwaysOnDisplayTile extends QSTileImpl<BooleanState> implements
+public class AlwaysOnDisplayTile extends QSTileImpl<State> implements
         BatteryController.BatteryStateChangeCallback {
 
     public static final String TILE_SPEC = "aod";
@@ -86,6 +89,16 @@ public class AlwaysOnDisplayTile extends QSTileImpl<BooleanState> implements
         batteryController.observe(getLifecycle(), this);
     }
 
+    private int getAodState() {
+        int aodState = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                Settings.Secure.DOZE_ALWAYS_ON, 0, UserHandle.USER_CURRENT);
+        if (aodState == 0) {
+            aodState = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                    Settings.Secure.DOZE_ON_CHARGE, 0, UserHandle.USER_CURRENT) == 1 ? 2 : 0;
+        }
+        return aodState;
+    }
+
     @Override
     public void onPowerSaveChanged(boolean isPowerSave) {
         refreshState();
@@ -104,8 +117,8 @@ public class AlwaysOnDisplayTile extends QSTileImpl<BooleanState> implements
     }
 
     @Override
-    public BooleanState newTileState() {
-        BooleanState state = new BooleanState();
+    public State newTileState() {
+        State state = new State();
         state.handlesLongClick = false;
         return state;
     }
@@ -124,7 +137,29 @@ public class AlwaysOnDisplayTile extends QSTileImpl<BooleanState> implements
 
     @Override
     protected void handleClick(@Nullable View view) {
-        mSetting.setValue(mState.value ? 0 : 1);
+        int aodState = getAodState();
+        if (aodState < 2) {
+            aodState++;
+        } else {
+            aodState = 0;
+        }
+        Settings.Secure.putIntForUser(mContext.getContentResolver(),
+                Settings.Secure.DOZE_ALWAYS_ON, aodState == 2 ? 0 : aodState,
+                UserHandle.USER_CURRENT);
+        Settings.Secure.putIntForUser(mContext.getContentResolver(),
+                Settings.Secure.DOZE_ON_CHARGE, aodState == 2 ? 1 : 0, UserHandle.USER_CURRENT);
+        refreshState();
+    }
+
+    @Override
+    protected void handleLongClick(@Nullable View view) {
+        // always toggle on/off on long click
+        Settings.Secure.putIntForUser(mContext.getContentResolver(),
+                Settings.Secure.DOZE_ALWAYS_ON, getAodState() != 0 ? 0 : 1,
+                UserHandle.USER_CURRENT);
+        Settings.Secure.putIntForUser(mContext.getContentResolver(),
+                Settings.Secure.DOZE_ON_CHARGE, 0, UserHandle.USER_CURRENT);
+        refreshState();
     }
 
     @Override
@@ -134,26 +169,20 @@ public class AlwaysOnDisplayTile extends QSTileImpl<BooleanState> implements
 
     @Override
     public CharSequence getTileLabel() {
-        return mContext.getString(R.string.quick_settings_aod_label);
+        switch (getAodState()) {
+            case 1:
+                return mContext.getString(R.string.quick_settings_aod_label);
+            case 2:
+                return mContext.getString(R.string.quick_settings_aod_on_charge_label);
+            default:
+                return mContext.getString(R.string.quick_settings_aod_off_label);
+        }
     }
 
     @Override
-    protected void handleUpdateState(BooleanState state, Object arg) {
-        final int value = arg instanceof Integer ? (Integer) arg : mSetting.getValue();
-        final boolean enable = value != 0;
-        if (state.slash == null) {
-            state.slash = new SlashState();
-        }
+    protected void handleUpdateState(State state, Object arg) {
         state.icon = mIcon;
-        state.value = enable;
-        state.slash.isSlashed = state.value;
-        state.label = mContext.getString(R.string.quick_settings_aod_label);
-        if (mBatteryController.isAodPowerSave()) {
-            state.state = Tile.STATE_UNAVAILABLE;
-            state.secondaryLabel = mContext.getString(R.string.battery_detail_switch_title);
-        } else {
-            state.state = enable ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE;
-            state.secondaryLabel = null;
-        }
+        state.label = getTileLabel();
+        state.state = getAodState() == 0 ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE;
     }
 }
