@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f79398_3914d091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000468
+      },
+      "writtenOn": "2024-02-18T18:52:48Z",
+      "side": 1,
+      "message": "Can you attach imgur screenshots? before/after",
+      "revId": "998e5296243768d5305dc7f1f4b7a719fe47a321",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
