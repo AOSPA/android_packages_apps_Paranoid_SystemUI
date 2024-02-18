@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc6a6d59_e2d85f10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000469
+      },
+      "writtenOn": "2024-02-18T03:06:01Z",
+      "side": 1,
+      "message": "authorship is wrong https://github.com/yaap/frameworks_base/commit/52cde5c39c5a025e4895aaafd3bf7a4cfcbc4bb7",
+      "revId": "3de0913e5def5ee5b1974a314f12ac84d4fd85ed",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
