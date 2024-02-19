@@ -16,6 +16,24 @@
       "message": "Can you attach imgur screenshots? before/after",
       "revId": "998e5296243768d5305dc7f1f4b7a719fe47a321",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae661f2d_22d8b3a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000895
+      },
+      "writtenOn": "2024-02-19T04:51:23Z",
+      "side": 1,
+      "message": "https://imgur.com/a/XrzWlSw",
+      "parentUuid": "19f79398_3914d091",
+      "revId": "998e5296243768d5305dc7f1f4b7a719fe47a321",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
