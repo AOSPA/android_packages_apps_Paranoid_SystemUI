@@ -147,11 +147,7 @@ public class BluetoothViewAdapter extends
             mBluetoothSummaryText = view.requireViewById(R.id.bluetooth_summary);
             mBluetoothEndIcon = view.requireViewById(R.id.bluetooth_end_icon);
             mBackgroundOn = mContext.getDrawable(R.drawable.settingslib_switch_bar_bg_on);
-
-            try (final TypedArray typedArray = mContext.obtainStyledAttributes(
-                    new int[]{android.R.attr.selectableItemBackground})) {
-                mBackgroundOff = typedArray.getDrawable(0 /* index */);
-            }
+            mBackgroundOff = mContext.getDrawable(R.drawable.internet_dialog_selected_effect);
         }
 
         void onBind(@NonNull CachedBluetoothDevice device, boolean isActive) {
