@@ -16,6 +16,24 @@
       "message": "lets merge this with aod state",
       "revId": "d53c94b700ebb3ee60e78b43d1906d7feae6f121",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7901f1_ba594d54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000469
+      },
+      "writtenOn": "2024-02-20T15:29:13Z",
+      "side": 1,
+      "message": "you mean squash? but i dont think so, i had this change in mind even before aod states",
+      "parentUuid": "9fcff071_aecb5ad6",
+      "revId": "d53c94b700ebb3ee60e78b43d1906d7feae6f121",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
