@@ -117,7 +117,6 @@ public class AlwaysOnDisplayTile extends QSTileImpl<State> implements
     @Override
     public State newTileState() {
         State state = new State();
-        state.handlesLongClick = false;
         return state;
     }
 
@@ -145,17 +144,8 @@ public class AlwaysOnDisplayTile extends QSTileImpl<State> implements
     }
 
     @Override
-    protected void handleLongClick(@Nullable View view) {
-        Settings.Secure.putIntForUser(mContext.getContentResolver(), Settings.Secure.DOZE_ALWAYS_ON,
-                getDozeState() != 0 ? 0 : 1, UserHandle.USER_CURRENT);
-        Settings.Secure.putIntForUser(mContext.getContentResolver(), Settings.Secure.DOZE_ON_CHARGE,
-                0, UserHandle.USER_CURRENT);
-        refreshState();
-    }
-
-    @Override
     public Intent getLongClickIntent() {
-        return null;
+        return new Intent(Settings.ACTION_LOCKSCREEN_SETTINGS);
     }
 
     @Override
