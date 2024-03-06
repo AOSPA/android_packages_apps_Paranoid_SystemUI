@@ -37,7 +37,7 @@ import com.android.systemui.plugins.qs.QSTile.State;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.QsEventLogger;
-import com.android.systemui.qs.SettingObserver;
+import com.android.systemui.qs.UserSettingObserver;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.res.R;
@@ -55,7 +55,7 @@ public class AlwaysOnDisplayTile extends QSTileImpl<State> implements
     private final Icon mIcon = ResourceIcon.get(R.drawable.ic_qs_aod);
     private final BatteryController mBatteryController;
 
-    private final SettingObserver mSetting;
+    private final UserSettingObserver mSetting;
 
     @Inject
     public AlwaysOnDisplayTile(
@@ -75,7 +75,7 @@ public class AlwaysOnDisplayTile extends QSTileImpl<State> implements
         super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger);
 
-        mSetting = new SettingObserver(secureSettings, mHandler, Settings.Secure.DOZE_ALWAYS_ON,
+        mSetting = new UserSettingObserver(secureSettings, mHandler, Settings.Secure.DOZE_ALWAYS_ON,
                 userTracker.getUserId()) {
             @Override
             protected void handleValueChanged(int value, boolean observedChange) {
