@@ -36,6 +36,7 @@ import com.android.systemui.volume.VolumeComponent;
 import com.android.systemui.volume.VolumeDialogImpl;
 import com.android.systemui.volume.VolumePanelFactory;
 import com.android.systemui.volume.dagger.VolumeModule;
+import com.android.systemui.tuner.TunerService;
 
 import co.aospa.systemui.tristate.dagger.TriStateModule;
 import co.aospa.systemui.volume.ParanoidVolumeDialogComponent;
@@ -68,7 +69,8 @@ public interface ParanoidVolumeModule {
             CsdWarningDialog.Factory csdFactory,
             DevicePostureController devicePostureController,
             DumpManager dumpManager,
-            FeatureFlags featureFlags) {
+            FeatureFlags featureFlags,
+            TunerService tunerService) {
         VolumeDialogImpl impl = new VolumeDialogImpl(
                 context,
                 volumeDialogController,
@@ -84,7 +86,8 @@ public interface ParanoidVolumeModule {
                 devicePostureController,
                 Looper.getMainLooper(),
                 dumpManager,
-                featureFlags);
+                featureFlags,
+                tunerService);
         impl.setStreamImportant(AudioManager.STREAM_SYSTEM, false);
         impl.setAutomute(true);
         impl.setSilentMode(false);
