@@ -27,6 +27,7 @@ import co.aospa.systemui.qs.tiles.PowerShareTile
 import co.aospa.systemui.qs.tiles.SoundTile
 import co.aospa.systemui.qs.tiles.UsbTetherTile
 import co.aospa.systemui.qs.tiles.WifiTile
+import co.aospa.systemui.qs.tiles.FlashlightStrengthTile
 import com.android.systemui.qs.tileimpl.QSTileImpl
 import dagger.Binds
 import dagger.Module
@@ -71,6 +72,12 @@ interface ParanoidQSModule {
     @IntoMap
     @StringKey(DcDimmingTile.TILE_SPEC)
     fun bindDcDimmingTile(dcDimmingTile: DcDimmingTile): QSTileImpl<*>
+
+    /** Inject FlashlightStrengthTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(FlashlightStrengthTile.TILE_SPEC)
+    fun bindFlashlightStrengthTile(flashlightStrengthTile: FlashlightStrengthTile): QSTileImpl<*>
 
     /** Inject HeadsUpTile into tileMap in QSModule */
     @Binds
