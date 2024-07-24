@@ -17,6 +17,7 @@
 package co.aospa.systemui.qs.tileimpl;
 
 import static android.service.quicksettings.Tile.STATE_ACTIVE;
+import static android.service.quicksettings.Tile.STATE_INACTIVE;
 
 import android.content.Context;
 import android.database.ContentObserver;
@@ -40,6 +41,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.settingslib.Utils;
 import com.android.systemui.R;
 import com.android.systemui.plugins.qs.QSIconView;
 import com.android.systemui.plugins.qs.QSTile;
@@ -51,6 +53,8 @@ public class SliderQSTileViewImpl extends QSTileViewImpl {
     private String mSettingsKey;
     private SettingObserver mSettingObserver;
     private boolean enabled = false;
+    private float mCurrentPercent;
+    private int mWarnColor;
 
     private final static int ACTIVE_STATE_PERCENTAGE_ALPHA = 64;
     private final static int INACTIVE_STATE_PERCENTAGE_ALPHA = 0;
@@ -65,9 +69,10 @@ public class SliderQSTileViewImpl extends QSTileViewImpl {
         super(context, icon, collapsed);
         if (touchListener != null && !settingKey.isEmpty()) {
             mSettingsKey = settingKey;
+            mWarnColor = Utils.getColorErrorDefaultColor(context);
             percentageDrawable = new PercentageDrawable(settingsDefaultValue);
             percentageDrawable.setTint(Color.WHITE);
-            updatePercentBackground(false /* default */);
+            updatePercentBackground(STATE_INACTIVE); // default
             mSettingObserver = new SettingObserver(new Handler(Looper.getMainLooper()));
             setOnTouchListener(touchListener);
             mContext.getContentResolver()
@@ -84,14 +89,27 @@ public class SliderQSTileViewImpl extends QSTileViewImpl {
     public void handleStateChanged(QSTile.State state) {
         super.handleStateChanged(state);
         if (enabled) {
-            updatePercentBackground(state.state == STATE_ACTIVE);
+            updatePercentBackground(state.state);
         }
     }
 
-    private void updatePercentBackground(boolean active) {
+    @Override
+    public int getBackgroundColorForState(int state, boolean disabledByPolicy) {
+        if (state == STATE_ACTIVE && mCurrentPercent >= 0.90f) {
+            return mWarnColor;
+        } else {
+            return super.getBackgroundColorForState(state, disabledByPolicy);
+        }
+    }
+
+    private void updatePercentBackground(int state) {
         // Hide the percentage when inactive.
-        percentageDrawable.setAlpha(active ? ACTIVE_STATE_PERCENTAGE_ALPHA
+        boolean isActive = state == STATE_ACTIVE;
+        percentageDrawable.setAlpha(isActive ? ACTIVE_STATE_PERCENTAGE_ALPHA
                 : INACTIVE_STATE_PERCENTAGE_ALPHA);
+        if (isActive) {
+            setColor(getBackgroundColorForState(state, false));
+        }
         LayerDrawable layerDrawable =
                 new LayerDrawable(new Drawable[] {colorBackgroundDrawable, percentageDrawable});
         setBackground(layerDrawable);
@@ -111,7 +129,6 @@ public class SliderQSTileViewImpl extends QSTileViewImpl {
 
     private class PercentageDrawable extends Drawable {
         private Drawable shape;
-        private float mCurrentPercent;
         private float mDefaultPercent;
 
         private PercentageDrawable(float defaultPercent) {
