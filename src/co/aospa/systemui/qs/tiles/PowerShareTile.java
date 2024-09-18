@@ -26,11 +26,11 @@ import android.os.Looper;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.service.quicksettings.Tile;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
+import com.android.systemui.animation.Expandable;
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.plugins.ActivityStarter;
@@ -155,7 +155,7 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
     }
 
     @Override
-    public void handleClick(@Nullable View view) {
+    public void handleClick(@Nullable Expandable expandable) {
         try {
             boolean powerShareEnabled = mPowerShare.isEnabled();
 
@@ -191,10 +191,6 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
             return;
         }
 
-        if (state.slash == null) {
-            state.slash = new SlashState();
-        }
-
         state.icon = ResourceIcon.get(R.drawable.ic_qs_powershare);
         try {
             state.value = mPowerShare.isEnabled();
@@ -202,7 +198,6 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
             state.value = false;
             ex.printStackTrace();
         }
-        state.slash.isSlashed = state.value;
         state.label = mContext.getString(R.string.quick_settings_powershare_label);
 
         if (mBatteryController.isPowerSave() || getBatteryLevel() < getMinBatteryLevel()) {
