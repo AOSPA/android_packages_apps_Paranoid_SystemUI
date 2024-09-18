@@ -38,6 +38,10 @@ import com.android.systemui.display.ui.viewmodel.ConnectingDisplayViewModel;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
+import com.android.systemui.keyboard.shortcut.ShortcutHelperModule;
+import com.android.systemui.keyguard.ui.composable.blueprint.DefaultBlueprintModule;
+import com.android.systemui.keyguard.ui.view.layout.blueprints.KeyguardBlueprintModule;
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule;
 import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.media.muteawait.MediaMuteAwaitConnectionCli;
 import com.android.systemui.media.nearby.NearbyMediaDevicesManager;
@@ -87,6 +91,7 @@ import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
 import com.android.systemui.toast.ToastModule;
 import com.android.systemui.unfold.SysUIUnfoldStartableModule;
 import com.android.systemui.unfold.UnfoldTransitionModule;
+import com.android.systemui.util.kotlin.SysUICoroutinesModule;
 import com.android.systemui.wallpapers.dagger.WallpaperModule;
 
 import javax.inject.Named;
@@ -107,8 +112,11 @@ import dagger.Provides;
         BatterySaverModule.class,
         CollapsedStatusBarFragmentStartableModule.class,
         ConnectingDisplayViewModel.StartableModule.class,
+        DefaultBlueprintModule.class,
         GestureModule.class,
         KeyboardShortcutsModule.class,
+        KeyguardBlueprintModule.class,
+        KeyguardSectionsModule.class,
         MediaModule.class,
         MediaMuteAwaitConnectionCli.StartableModule.class,
         MultiUserUtilsModule.class,
@@ -125,13 +133,15 @@ import dagger.Provides;
         ShadeModule.class,
         StartCentralSurfacesModule.class,
         SceneContainerFrameworkModule.class,
+        SysUICoroutinesModule.class,
         SysUIUnfoldStartableModule.class,
         UnfoldTransitionModule.Startables.class,
         ToastModule.class,
         StatusBarEventsModule.class,
         ParanoidQSModule.class,
         ParanoidVolumeModule.class,
-        WallpaperModule.class
+        WallpaperModule.class,
+        ShortcutHelperModule.class
 })
 public abstract class ParanoidSystemUIModule {
 
