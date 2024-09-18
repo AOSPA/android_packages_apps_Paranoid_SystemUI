@@ -31,12 +31,11 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
-import com.android.systemui.R;
+import com.android.systemui.animation.Expandable;
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.qs.QsEventLogger;
@@ -112,7 +111,7 @@ public class UsbTetherTile extends QSTileImpl<BooleanState> {
     }
 
     @Override
-    protected void handleClick(@Nullable View view) {
+    protected void handleClick(@Nullable Expandable expandable) {
         if (!mUsbConnected) return;
         if (!mUsbTetherEnabled) {
             mTetheringManager.startTethering(TETHERING_USB, mHandlerExecutor, mTetheringCallback);
