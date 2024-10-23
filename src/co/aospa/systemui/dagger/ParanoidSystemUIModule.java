@@ -24,56 +24,66 @@ import android.content.Context;
 import android.hardware.SensorPrivacyManager;
 import android.os.Handler;
 
-import com.android.internal.logging.UiEventLogger;
 import com.android.keyguard.KeyguardViewController;
+import com.android.systemui.CoreStartable;
+import com.android.systemui.ScreenDecorationsModule;
+import com.android.systemui.accessibility.SystemActionsModule;
 import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.biometrics.FingerprintInteractiveToAuthProvider;
+import com.android.systemui.display.ui.viewmodel.ConnectingDisplayViewModel;
 import com.android.systemui.controls.controller.ControlsTileResourceConfiguration;
-import com.android.systemui.dagger.ReferenceSystemUIModule;
-import com.android.systemui.dagger.SysUISingleton;
-import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.dock.DockManagerImpl;
 import com.android.systemui.doze.DozeHost;
+import com.android.systemui.keyboard.shortcut.ShortcutHelperModule;
+import com.android.systemui.keyguard.ui.composable.blueprint.DefaultBlueprintModule;
+import com.android.systemui.keyguard.ui.view.layout.blueprints.KeyguardBlueprintModule;
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule;
 import com.android.systemui.media.dagger.MediaModule;
+import com.android.systemui.media.muteawait.MediaMuteAwaitConnectionCli;
+import com.android.systemui.media.nearby.NearbyMediaDevicesManager;
+import com.android.systemui.navigationbar.NavigationBarControllerModule;
 import com.android.systemui.navigationbar.gestural.GestureModule;
 import com.android.systemui.plugins.qs.QSFactory;
-import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.power.dagger.PowerModule;
 import com.android.systemui.qs.dagger.QSModule;
-import com.android.systemui.qs.tileimpl.QSFactoryImpl;
+import com.android.systemui.reardisplay.RearDisplayModule;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsImplementation;
 import com.android.systemui.rotationlock.RotationLockModule;
+import com.android.systemui.rotationlock.RotationLockNewModule;
+import com.android.systemui.scene.SceneContainerFrameworkModule;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
-import com.android.systemui.settings.dagger.MultiUserUtilsModule;
+import com.android.systemui.settings.MultiUserUtilsModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
-import com.android.systemui.shade.ShadeExpansionStateManager;
+import com.android.systemui.shade.ShadeModule;
+import com.android.systemui.startable.Dependencies;
 import com.android.systemui.statusbar.CommandQueue;
 import com.android.systemui.statusbar.KeyboardShortcutsModule;
 import com.android.systemui.statusbar.NotificationLockscreenUserManager;
 import com.android.systemui.statusbar.NotificationLockscreenUserManagerImpl;
 import com.android.systemui.statusbar.NotificationShadeWindowController;
+import com.android.systemui.statusbar.SysuiStatusBarStateController;
 import com.android.systemui.statusbar.dagger.StartCentralSurfacesModule;
-import com.android.systemui.statusbar.events.StatusBarEventsModule;
-import com.android.systemui.statusbar.notification.collection.provider.VisualStabilityProvider;
-import com.android.systemui.statusbar.notification.collection.render.GroupMembershipManager;
+import com.android.systemui.statusbar.phone.CentralSurfaces;
 import com.android.systemui.statusbar.phone.DozeServiceHost;
-import com.android.systemui.statusbar.phone.HeadsUpManagerPhone;
-import com.android.systemui.statusbar.phone.KeyguardBypassController;
+import com.android.systemui.statusbar.phone.HeadsUpModule;
 import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
-import com.android.systemui.statusbar.policy.AccessibilityManagerWrapper;
+import com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragmentStartableModule;
 import com.android.systemui.statusbar.policy.AospPolicyModule;
-import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedControllerImpl;
-import com.android.systemui.statusbar.policy.HeadsUpManager;
-import com.android.systemui.statusbar.policy.HeadsUpManagerLogger;
 import com.android.systemui.statusbar.policy.IndividualSensorPrivacyController;
 import com.android.systemui.statusbar.policy.IndividualSensorPrivacyControllerImpl;
 import com.android.systemui.statusbar.policy.SensorPrivacyController;
 import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
+import com.android.systemui.toast.ToastModule;
+import com.android.systemui.unfold.SysUIUnfoldStartableModule;
+import com.android.systemui.unfold.UnfoldTransitionModule;
+import com.android.systemui.util.kotlin.SysUICoroutinesModule;
 import com.android.systemui.wallpapers.dagger.WallpaperModule;
+
+import java.util.Set;
 
 import javax.inject.Named;
 
@@ -81,9 +91,12 @@ import co.aospa.systemui.biometrics.FingerprintInteractiveToAuthProviderImpl;
 import co.aospa.systemui.controls.AospaControlsTileResourceConfigurationImpl;
 import co.aospa.systemui.qs.tileimpl.ParanoidQSModule;
 import co.aospa.systemui.volume.dagger.ParanoidVolumeModule;
+
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
+import dagger.multibindings.ClassKey;
+import dagger.multibindings.IntoMap;
 
 /**
  * Fork of {@link ReferenceSystemUIModule}
@@ -91,20 +104,38 @@ import dagger.Provides;
 @Module(includes = {
         AospPolicyModule.class,
         BatterySaverModule.class,
+        CollapsedStatusBarFragmentStartableModule.class,
+        ConnectingDisplayViewModel.StartableModule.class,
+        DefaultBlueprintModule.class,
         GestureModule.class,
+        HeadsUpModule.class,
+        KeyboardShortcutsModule.class,
+        KeyguardBlueprintModule.class,
+        KeyguardSectionsModule.class,
         MediaModule.class,
+        MediaMuteAwaitConnectionCli.StartableModule.class,
         MultiUserUtilsModule.class,
+        NavigationBarControllerModule.class,
+        NearbyMediaDevicesManager.StartableModule.class,
         PowerModule.class,
-        QSModule.class,
+        ParanoidQSModule.class,
+        RearDisplayModule.class,
         ReferenceScreenshotModule.class,
         RotationLockModule.class,
+        RotationLockNewModule.class,
+        ScreenDecorationsModule.class,
+        SystemActionsModule.class,
+        ShadeModule.class,
         StartCentralSurfacesModule.class,
-        StatusBarEventsModule.class,
-        ParanoidQSModule.class,
+        SceneContainerFrameworkModule.class,
+        SysUICoroutinesModule.class,
+        SysUIUnfoldStartableModule.class,
+        UnfoldTransitionModule.Startables.class,
+        ToastModule.class,
         ParanoidVolumeModule.class,
-        KeyboardShortcutsModule.class,
-        WallpaperModule.class
-})
+        WallpaperModule.class,
+        ShortcutHelperModule.class,
+}),
 public abstract class ParanoidSystemUIModule {
 
     @SysUISingleton
@@ -152,38 +183,6 @@ public abstract class ParanoidSystemUIModule {
         return true;
     }
 
-    @SysUISingleton
-    @Provides
-    static HeadsUpManagerPhone provideHeadsUpManagerPhone(
-            Context context,
-            HeadsUpManagerLogger headsUpManagerLogger,
-            StatusBarStateController statusBarStateController,
-            KeyguardBypassController bypassController,
-            GroupMembershipManager groupManager,
-            VisualStabilityProvider visualStabilityProvider,
-            ConfigurationController configurationController,
-            @Main Handler handler,
-            AccessibilityManagerWrapper accessibilityManagerWrapper,
-            UiEventLogger uiEventLogger,
-            ShadeExpansionStateManager shadeExpansionStateManager) {
-        return new HeadsUpManagerPhone(
-                context,
-                headsUpManagerLogger,
-                statusBarStateController,
-                bypassController,
-                groupManager,
-                visualStabilityProvider,
-                configurationController,
-                handler,
-                accessibilityManagerWrapper,
-                uiEventLogger,
-                shadeExpansionStateManager
-        );
-    }
-
-    @Binds
-    abstract HeadsUpManager bindHeadsUpManagerPhone(HeadsUpManagerPhone headsUpManagerPhone);
-
     @Provides
     @SysUISingleton
     static Recents provideRecents(Context context, RecentsImplementation recentsImplementation,
@@ -217,4 +216,13 @@ public abstract class ParanoidSystemUIModule {
     @Binds
     abstract FingerprintInteractiveToAuthProvider bindFingerprintInteractiveToAuthProviderImpl(
             FingerprintInteractiveToAuthProviderImpl impl);
+
+    /** */
+    @Provides
+    @IntoMap
+    @Dependencies
+    @ClassKey(SysuiStatusBarStateController.class)
+    static Set<Class<? extends CoreStartable>> providesStatusBarStateControllerDeps() {
+        return Set.of(CentralSurfaces.class);
+    }
 }
