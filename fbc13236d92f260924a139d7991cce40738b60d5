@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d60e17_8f5b3937",
+        "filename": "src/co/aospa/systemui/volume/dagger/ParanoidVolumeModule.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2024-10-23T23:29:04Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `ParanoidVolumeUI` too?",
+      "revId": "fbc13236d92f260924a139d7991cce40738b60d5",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
