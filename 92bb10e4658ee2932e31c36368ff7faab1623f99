@@ -16,6 +16,24 @@
       "message": "i merged this with another commit so we can drop this",
       "revId": "92bb10e4658ee2932e31c36368ff7faab1623f99",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2123fd51_632ec956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000579
+      },
+      "writtenOn": "2024-10-23T14:10:10Z",
+      "side": 1,
+      "message": "dont mess with my chain thanks",
+      "parentUuid": "91106b58_145a822c",
+      "revId": "92bb10e4658ee2932e31c36368ff7faab1623f99",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
