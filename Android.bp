@@ -22,7 +22,10 @@ android_library {
         "vendor.aospa.powershare-V1-java",
     ],
     manifest: "AndroidManifest.xml",
-    javacflags: ["-Adagger.fastInit=enabled"],
+    javacflags: [
+        "-Adagger.fastInit=enabled",
+        "-Adagger.useBindingGraphFix=ENABLED",
+    ],
     kotlincflags: ["-Xjvm-default=all"],
     plugins: ["dagger2-compiler"],
 }
