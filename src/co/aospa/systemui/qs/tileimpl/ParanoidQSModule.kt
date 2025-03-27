@@ -21,6 +21,7 @@ import co.aospa.systemui.qs.tiles.CaffeineTile
 import co.aospa.systemui.qs.tiles.CellularTile
 import co.aospa.systemui.qs.tiles.DataSwitchTile
 import co.aospa.systemui.qs.tiles.DcDimmingTile
+import co.aospa.systemui.qs.tiles.FivegTile
 import co.aospa.systemui.qs.tiles.HeadsUpTile
 import co.aospa.systemui.qs.tiles.PowerShareTile
 import co.aospa.systemui.qs.tiles.SoundTile
@@ -94,5 +95,11 @@ interface ParanoidQSModule {
     @IntoMap
     @StringKey(SoundTile.TILE_SPEC)
     fun bindSoundTile(soundTile: SoundTile): QSTileImpl<*>
+
+    /** Inject FivegTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(FivegTile.TILE_SPEC)
+    fun bindFivegTile(fivegTile: FivegTile): QSTileImpl<*>
 
 }
