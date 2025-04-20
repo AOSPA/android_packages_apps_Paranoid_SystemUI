@@ -59,4 +59,10 @@
     <string name="quick_settings_sound_vibrate">Vibrate</string>
     <string name="quick_settings_sound_silent">Silent</string>
 
+    <!-- DNS QS Tile -->
+    <string name="qs_dns_label">DNS</string>
+    <string name="qs_dns_mode_off">Off</string>
+    <string name="qs_dns_mode_auto">Automatic</string>
+    <string name="qs_dns_mode_custom">Custom</string>
+
 </resources>
