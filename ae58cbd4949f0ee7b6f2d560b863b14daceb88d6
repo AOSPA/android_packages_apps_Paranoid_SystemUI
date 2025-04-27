@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d886726_03954049",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2025-04-27T15:48:37Z",
+      "side": 1,
+      "message": "How often are you changing DNS settings that you need a tile for it?  Can you describe your use case?",
+      "revId": "ae58cbd4949f0ee7b6f2d560b863b14daceb88d6",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
