@@ -16,6 +16,24 @@
       "message": "How often are you changing DNS settings that you need a tile for it?  Can you describe your use case?",
       "revId": "ae58cbd4949f0ee7b6f2d560b863b14daceb88d6",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eccc60ea_1545957a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000972
+      },
+      "writtenOn": "2025-04-28T09:29:44Z",
+      "side": 1,
+      "message": "I use a custom DNS configuration to block ads, but some websites and apps don’t load correctly with it enabled. In such cases, having a quick way to switch DNS modes without going through system settings is very helpful.",
+      "parentUuid": "3d886726_03954049",
+      "revId": "ae58cbd4949f0ee7b6f2d560b863b14daceb88d6",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
     }
   ]
 }
