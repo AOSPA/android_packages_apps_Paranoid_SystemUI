@@ -18,7 +18,11 @@ package co.aospa.systemui.volume;
 
 import android.content.Context;
 
+import com.android.settingslib.volume.data.repository.AudioRepository;
 import com.android.systemui.dagger.SysUISingleton;
+import com.android.systemui.util.kotlin.JavaAdapter;
+import com.android.systemui.volume.domain.interactor.AudioSharingInteractor;
+import com.android.systemui.volume.shared.VolumeLogger;
 import com.android.systemui.volume.VolumeDialogComponent;
 import com.android.systemui.volume.VolumeUI;
 
@@ -32,7 +36,12 @@ public class ParanoidVolumeUI extends VolumeUI {
 
     @Inject
     public ParanoidVolumeUI(Context context,
-            ParanoidVolumeDialogComponent volumeDialogComponent) {
-        super(context, volumeDialogComponent);
+            ParanoidVolumeDialogComponent volumeDialogComponent,
+            AudioRepository audioRepository,
+            AudioSharingInteractor audioSharingInteractor,
+            JavaAdapter javaAdapter,
+            VolumeLogger volumeLogger) {
+        super(context, volumeDialogComponent, audioRepository,
+                audioSharingInteractor, javaAdapter, volumeLogger);
     }
 }

@@ -21,7 +21,6 @@ import com.android.systemui.dagger.DependencyProvider;
 import com.android.systemui.dagger.ReferenceSysUIComponent;
 import com.android.systemui.dagger.SysUIComponent;
 import com.android.systemui.dagger.SysUISingleton;
-import com.android.systemui.dagger.SystemUIBinder;
 import com.android.systemui.dagger.SystemUICoreStartableModule;
 import com.android.systemui.dagger.SystemUIModule;
 import com.android.systemui.keyguard.CustomizationProvider;
@@ -40,9 +39,9 @@ import dagger.Subcomponent;
         DependencyProvider.class,
         NotificationInsetsModule.class,
         QsFrameTranslateModule.class,
-        SystemUIBinder.class,
         SystemUIModule.class,
         SystemUICoreStartableModule.class,
+        SysUIUnfoldModule.class,
         ParanoidSystemUIModule.class})
 public interface ParanoidSysUIComponent extends SysUIComponent {
     @SysUISingleton
