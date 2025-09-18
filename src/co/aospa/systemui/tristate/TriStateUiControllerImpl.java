@@ -281,16 +281,16 @@ public class TriStateUiControllerImpl implements ConfigurationListener, TriState
                 int gravity = mWindowLayoutParams.gravity;
                 switch (mTriStateMode) {
                     case MODE_SILENT:
-                        iconId = R.drawable.ic_volume_ringer_mute;
-                        textId = R.string.volume_ringer_status_silent;
+                        iconId = com.android.systemui.res.R.drawable.ic_volume_ringer_mute;
+                        textId = com.android.systemui.res.R.string.volume_ringer_status_silent;
                         break;
                     case MODE_VIBRATE:
-                        iconId = R.drawable.ic_volume_ringer_vibrate;
-                        textId = R.string.volume_ringer_status_vibrate;
+                        iconId = com.android.systemui.res.R.drawable.ic_volume_ringer_vibrate;
+                        textId = com.android.systemui.res.R.string.volume_ringer_status_vibrate;
                         break;
                     case MODE_NORMAL:
-                        iconId = R.drawable.ic_volume_ringer;
-                        textId = R.string.volume_ringer_status_normal;
+                        iconId = com.android.systemui.res.R.drawable.ic_volume_ringer;
+                        textId = com.android.systemui.res.R.string.volume_ringer_status_normal;
                         break;
                 }
                 int triStatePos = res.getInteger(R.integer.config_alertSliderLocation);

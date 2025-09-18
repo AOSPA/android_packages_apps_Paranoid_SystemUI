@@ -19,7 +19,7 @@ class AospaControlsTileResourceConfigurationImpl @Inject constructor(
         if (componentName.getPackageName().equals(GOOGLE_HOME_PACKAGE)) {
             return R.drawable.home_controls_icon
         }
-        return R.drawable.controls_icon
+        return com.android.systemui.res.R.drawable.controls_icon
     }
 
     override fun getPackageName(): String? = null
@@ -28,7 +28,7 @@ class AospaControlsTileResourceConfigurationImpl @Inject constructor(
         if (componentName.getPackageName().equals(GOOGLE_HOME_PACKAGE)) {
             return R.string.home_controls_tile_title
         }
-        return R.string.quick_controls_title
+        return com.android.systemui.res.R.string.quick_controls_title
     }
 
     companion object {

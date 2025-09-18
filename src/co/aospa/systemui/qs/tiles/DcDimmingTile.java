@@ -34,7 +34,6 @@ import androidx.annotation.Nullable;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.systemui.animation.Expandable;
-import com.android.systemui.R;
 import com.android.systemui.dagger.qualifiers.Background;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.plugins.ActivityStarter;
@@ -45,6 +44,7 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
+import com.android.systemui.R;
 
 import javax.inject.Inject;
 
@@ -105,8 +105,8 @@ public class DcDimmingTile extends QSTileImpl<QSTile.BooleanState> {
         switch (mode) {
             case MODE_AUTO_TIME:
                 state.secondaryLabel = mContext.getResources().getString(dcOn
-                    ? R.string.quick_settings_dark_mode_secondary_label_until_sunrise
-                    : R.string.quick_settings_dark_mode_secondary_label_on_at_sunset);
+                    ? com.android.systemui.res.R.string.quick_settings_dark_mode_secondary_label_until_sunrise
+                    : com.android.systemui.res.R.string.quick_settings_dark_mode_secondary_label_on_at_sunset);
                 break;
             default:
                 state.secondaryLabel = null;
