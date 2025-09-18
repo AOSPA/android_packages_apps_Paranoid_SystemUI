@@ -40,7 +40,7 @@ import com.android.systemui.qs.QsEventLogger;
 import com.android.systemui.qs.UserSettingObserver;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
-import com.android.systemui.res.R;
+import com.android.systemui.R;
 import com.android.systemui.settings.UserTracker;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.util.settings.SecureSettings;
@@ -162,11 +162,11 @@ public class AlwaysOnDisplayTile extends QSTileImpl<State> implements
         switch (dozeState) {
             case 0:
                 state.state = Tile.STATE_INACTIVE;
-                state.secondaryLabel = mContext.getString(R.string.switch_bar_off);
+                state.secondaryLabel = mContext.getString(com.android.systemui.res.R.string.switch_bar_off);
                 break;
             case 1:
                 state.state = Tile.STATE_ACTIVE;
-                state.secondaryLabel = mContext.getString(R.string.switch_bar_on);
+                state.secondaryLabel = mContext.getString(com.android.systemui.res.R.string.switch_bar_on);
                 break;
             case 2:
                 state.state = Tile.STATE_ACTIVE;
