@@ -36,12 +36,11 @@ import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.QsEventLogger;
-import com.android.systemui.qs.SettingObserver;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
-import com.android.systemui.settings.UserTracker;
 import com.android.systemui.util.settings.GlobalSettings;
+import com.android.systemui.util.settings.SettingObserver;
 
 import javax.inject.Inject;
 
@@ -68,13 +67,13 @@ public class HeadsUpTile extends QSTileImpl<BooleanState> {
             StatusBarStateController statusBarStateController,
             ActivityStarter activityStarter,
             QSLogger qsLogger,
-            GlobalSettings globalSettings,
-            UserTracker userTracker
+            GlobalSettings globalSettings
     ) {
         super(host, uiEventLogger, backgroundLooper, mainHandler, falsingManager, metricsLogger,
                 statusBarStateController, activityStarter, qsLogger);
 
-        mSetting = new SettingObserver(globalSettings, mHandler, Global.HEADS_UP_NOTIFICATIONS_ENABLED, userTracker.getUserId()) {
+        mSetting = new SettingObserver(globalSettings, mHandler,
+                Global.HEADS_UP_NOTIFICATIONS_ENABLED) {
             @Override
             protected void handleValueChanged(int value, boolean observedChange) {
                 handleRefreshState(value);
