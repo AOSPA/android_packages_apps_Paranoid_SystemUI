@@ -109,12 +109,12 @@ import com.android.systemui.touchpad.tutorial.TouchpadTutorialModule;
 import com.android.systemui.unfold.SysUIUnfoldStartableModule;
 import com.android.systemui.unfold.UnfoldTransitionModule;
 import com.android.systemui.util.kotlin.SysUICoroutinesModule;
+import com.android.systemui.volume.dagger.VolumeModule;
 import com.android.systemui.wallpapers.dagger.WallpaperModule;
 
 import co.aospa.systemui.biometrics.FingerprintInteractiveToAuthProviderImpl;
 import co.aospa.systemui.controls.AospaControlsTileResourceConfigurationImpl;
 import co.aospa.systemui.qs.tileimpl.ParanoidQSModule;
-import co.aospa.systemui.volume.dagger.ParanoidVolumeModule;
 
 import dagger.Binds;
 import dagger.Module;
@@ -179,7 +179,7 @@ import javax.inject.Provider;
         ToastModule.class,
         TopLevelWindowEffectsModule.class,
         TouchpadTutorialModule.class,
-        ParanoidVolumeModule.class,
+        VolumeModule.class,
         WallpaperModule.class,
         ShortcutHelperModule.class,
         SmartRepliesInflationModule.class,
