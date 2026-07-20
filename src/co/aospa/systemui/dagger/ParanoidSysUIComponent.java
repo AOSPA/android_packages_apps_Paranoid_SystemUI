@@ -25,6 +25,7 @@ import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.SystemUICoreStartableModule;
 import com.android.systemui.dagger.SystemUIModule;
 import com.android.systemui.keyguard.CustomizationProvider;
+import com.android.systemui.notifications.intelligence.rules.ui.NotificationRulesDefaultModule;
 import com.android.systemui.statusbar.NotificationInsetsModule;
 import com.android.systemui.statusbar.QsFrameTranslateModule;
 import com.android.systemui.unfold.SysUIUnfoldModule;
@@ -39,6 +40,7 @@ import dagger.Subcomponent;
         DefaultComponentBinder.class,
         DependencyProvider.class,
         NotificationInsetsModule.class,
+        NotificationRulesDefaultModule.class,
         QsFrameTranslateModule.class,
         SystemUIModule.class,
         PodModulePhone.class,
