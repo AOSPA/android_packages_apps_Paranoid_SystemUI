@@ -23,6 +23,7 @@ import com.android.systemui.CoreStartable;
 import com.android.systemui.plugins.VolumeDialog;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.volume.VolumeComponent;
+import com.android.systemui.volume.VolumeDialogComponent;
 import com.android.systemui.volume.VolumePanelDialogReceiver;
 import com.android.systemui.volume.dagger.AncModule;
 import com.android.systemui.volume.dagger.AudioModule;
@@ -36,8 +37,6 @@ import com.android.systemui.volume.dialog.dagger.factory.VolumeDialogPluginCompo
 import com.android.systemui.volume.panel.dagger.VolumePanelComponent;
 import com.android.systemui.volume.panel.dagger.factory.VolumePanelComponentFactory;
 
-import co.aospa.systemui.tristate.dagger.TriStateModule;
-import co.aospa.systemui.volume.ParanoidVolumeDialogComponent;
 import co.aospa.systemui.volume.ParanoidVolumeUI;
 
 import dagger.Binds;
@@ -54,8 +53,7 @@ import dagger.multibindings.IntoSet;
                 AncModule.class,
                 CaptioningModule.class,
                 MediaDevicesModule.class,
-                SpatializerModule.class,
-                TriStateModule.class
+                SpatializerModule.class
         },
         subcomponents = {
                 VolumePanelComponent.class,
@@ -85,7 +83,7 @@ public interface ParanoidVolumeModule {
 
     /**  */
     @Binds
-    VolumeComponent provideVolumeComponent(ParanoidVolumeDialogComponent volumeDialogComponent);
+    VolumeComponent provideVolumeComponent(VolumeDialogComponent volumeDialogComponent);
 
     /**  */
     @Binds

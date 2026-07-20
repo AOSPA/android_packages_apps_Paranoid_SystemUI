@@ -37,7 +37,7 @@ public class ParanoidVolumeUI extends VolumeUI {
 
     @Inject
     public ParanoidVolumeUI(Context context,
-            ParanoidVolumeDialogComponent volumeDialogComponent,
+            VolumeDialogComponent volumeDialogComponent,
             AudioRepository audioRepository,
             AudioSharingInteractor audioSharingInteractor,
             JavaAdapter javaAdapter,
