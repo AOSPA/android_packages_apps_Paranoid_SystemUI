@@ -23,6 +23,7 @@ import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.util.kotlin.JavaAdapter;
 import com.android.systemui.volume.domain.interactor.AudioSharingInteractor;
 import com.android.systemui.volume.shared.VolumeLogger;
+import com.android.systemui.volume.ui.navigation.VolumeNavigator;
 import com.android.systemui.volume.VolumeDialogComponent;
 import com.android.systemui.volume.VolumeUI;
 
@@ -40,8 +41,9 @@ public class ParanoidVolumeUI extends VolumeUI {
             AudioRepository audioRepository,
             AudioSharingInteractor audioSharingInteractor,
             JavaAdapter javaAdapter,
-            VolumeLogger volumeLogger) {
+            VolumeLogger volumeLogger,
+            VolumeNavigator volumeNavigator) {
         super(context, volumeDialogComponent, audioRepository,
-                audioSharingInteractor, javaAdapter, volumeLogger);
+                audioSharingInteractor, javaAdapter, volumeLogger, volumeNavigator);
     }
 }
