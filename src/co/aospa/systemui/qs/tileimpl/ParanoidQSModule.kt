@@ -18,14 +18,12 @@ package co.aospa.systemui.qs.tileimpl;
 
 import co.aospa.systemui.qs.tiles.AlwaysOnDisplayTile
 import co.aospa.systemui.qs.tiles.CaffeineTile
-import co.aospa.systemui.qs.tiles.CellularTile
 import co.aospa.systemui.qs.tiles.DataSwitchTile
 import co.aospa.systemui.qs.tiles.DcDimmingTile
 import co.aospa.systemui.qs.tiles.HeadsUpTile
 import co.aospa.systemui.qs.tiles.PowerShareTile
 import co.aospa.systemui.qs.tiles.SoundTile
 import co.aospa.systemui.qs.tiles.UsbTetherTile
-import co.aospa.systemui.qs.tiles.WifiTile
 import com.android.systemui.qs.tileimpl.QSTileImpl
 import dagger.Binds
 import dagger.Module
@@ -46,12 +44,6 @@ interface ParanoidQSModule {
     @IntoMap
     @StringKey(CaffeineTile.TILE_SPEC)
     fun bindCaffeineTile(caffeineTile: CaffeineTile): QSTileImpl<*>
-
-    /** Inject CellularTile into tileMap in QSModule */
-    @Binds
-    @IntoMap
-    @StringKey(CellularTile.TILE_SPEC)
-    fun bindCellularTile(cellularTile: CellularTile): QSTileImpl<*>
 
     /** Inject DataSwitchTile into tileMap in QSModule */
     @Binds
@@ -77,22 +69,16 @@ interface ParanoidQSModule {
     @StringKey(PowerShareTile.TILE_SPEC)
     fun bindPowerShareTile(powerShareTile: PowerShareTile): QSTileImpl<*>
 
-    /** Inject WifiTile into tileMap in QSModule */
+    /** Inject SoundTile into tileMap in QSModule */
     @Binds
     @IntoMap
-    @StringKey(WifiTile.TILE_SPEC)
-    fun bindWifiTile(wifiTile: WifiTile): QSTileImpl<*>
+    @StringKey(SoundTile.TILE_SPEC)
+    fun bindSoundTile(soundTile: SoundTile): QSTileImpl<*>
 
     /** Inject UsbTetherTile into tileMap in QSModule */
     @Binds
     @IntoMap
     @StringKey(UsbTetherTile.TILE_SPEC)
     fun bindUsbTetherTile(usbTetherTile: UsbTetherTile): QSTileImpl<*>
-
-    /** Inject SoundTile into tileMap in QSModule */
-    @Binds
-    @IntoMap
-    @StringKey(SoundTile.TILE_SPEC)
-    fun bindSoundTile(soundTile: SoundTile): QSTileImpl<*>
 
 }
