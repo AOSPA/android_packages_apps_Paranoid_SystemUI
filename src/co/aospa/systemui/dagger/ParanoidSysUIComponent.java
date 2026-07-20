@@ -16,6 +16,7 @@
 
 package co.aospa.systemui.dagger;
 
+import com.android.systemui.bundle.phone.PodModulePhone;
 import com.android.systemui.dagger.DefaultComponentBinder;
 import com.android.systemui.dagger.DependencyProvider;
 import com.android.systemui.dagger.ReferenceSysUIComponent;
@@ -40,6 +41,7 @@ import dagger.Subcomponent;
         NotificationInsetsModule.class,
         QsFrameTranslateModule.class,
         SystemUIModule.class,
+        PodModulePhone.class,
         SystemUICoreStartableModule.class,
         SysUIUnfoldModule.class,
         ParanoidSystemUIModule.class})
